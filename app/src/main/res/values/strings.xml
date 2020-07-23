@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">COMPX576_Heming_Yu</string>
+    <string name="str_login">Log in with : </string>
+    <string name="login_GooglePlus">G+</string>
+    <string name="login_Facebook">Facebook</string>
+    <string name="login_Twitter">Twitter</string>
+    <string name="login_name_pass">Welcome Back!</string>
 </resources>

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="xhsColor">#E1282D</color>
+    <color name="tab_textColor">#C1C1C1</color>
+    <color name="toolbar_search">#c42529</color>
+    <color name="blackColor">#2e2e2e</color>
+    <color name="textGrayColor">#868585</color>
+    <color name="msg_tab">#f00</color>
+    <color name="backgroundcolor">#f2f2f2</color>
+    <color name="black_gray">#515151</color>
+    <color name="gray">#a5a5a5</color>
+    <color name="blue">#2498e2</color>
+    <color name="green">#7ddb9d</color>
+    <color name="yellow">#fe9920</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="toolbar">#f24f73</color>
+    <color name="hotlable">#ecebeb</color>
+    <color name="refresh1">#e70505</color>
+    <color name="refresh2">#e75151</color>
+    <color name="refresh3">#ea7c7c</color>
+    <color name="refresh4">#ecb3b3</color>
+    <color name="bottom_bg">#aaaaaa</color>
 </resources>
