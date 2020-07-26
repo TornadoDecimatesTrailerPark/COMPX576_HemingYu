@@ -5,4 +5,11 @@
     <string name="login_Facebook">Facebook</string>
     <string name="login_Twitter">Twitter</string>
     <string name="login_name_pass">Welcome Back!</string>
+    <string name="main_page">Main Page</string>
+    <string name="profile">Profile</string>
+    <string name="please_input_password">please input password</string>
+    <string name="password">Password :</string>
+    <string name="please_input_account">please input account</string>
+    <string name="account">Account :</string>
+    <string name="create_an_account">Create an Account</string>
 </resources>

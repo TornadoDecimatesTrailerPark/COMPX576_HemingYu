@@ -80,7 +80,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="   Account :"
+            android:text="@string/account"
             android:paddingLeft="7dp"
             android:paddingRight="10dp"
             android:textSize="16sp"/>
@@ -90,7 +90,7 @@
             android:layout_height="50dp"
             android:background="@null"
             android:textSize="16sp"
-            android:hint="please input account"/>
+            android:hint="@string/please_input_account"/>
     </LinearLayout>
     <FrameLayout
         android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password :"
+                android:text="@string/password"
                 android:paddingLeft="7dp"
                 android:paddingRight="10dp"
                 android:textSize="16sp"/>
@@ -116,7 +116,7 @@
                 android:background="@null"
                 android:textSize="16sp"
                 android:inputType="textPassword"
-                android:hint="please input password"/>
+                android:hint="@string/please_input_password"/>
         </LinearLayout>
     </FrameLayout>
     <Button
@@ -142,6 +142,6 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="75dp"
-            android:text="Create an Account"/>
+            android:text="@string/create_an_account"/>
     </RelativeLayout>
 </LinearLayout>
