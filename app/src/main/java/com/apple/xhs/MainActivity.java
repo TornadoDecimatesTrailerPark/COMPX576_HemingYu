@@ -20,8 +20,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tab_home;
     @BindView(R.id.tab_search)
     TextView tab_search;
-    @BindView(R.id.tab_store)
-    TextView tab_store;
     @BindView(R.id.tab_msg)
     TextView tab_msg;
     @BindView(R.id.tab_me)
@@ -31,8 +29,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     View fragment_home;
     @BindView(R.id.fragment_search)
     View fragment_search;
-    @BindView(R.id.fragment_store)
-    View fragment_store;
     @BindView(R.id.fragment_msg)
     View fragment_msg;
     @BindView(R.id.fragment_me)
@@ -60,7 +56,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         tab_home.setOnClickListener(this);
         tab_search.setOnClickListener(this);
-        tab_store.setOnClickListener(this);
         tab_msg.setOnClickListener(this);
         tab_me.setOnClickListener(this);
 
@@ -82,10 +77,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 fragment_search.setVisibility(View.VISIBLE);
                 tab_search.setSelected(true);
                 break;
-            case R.id.tab_store:
-                fragment_store.setVisibility(View.VISIBLE);
-                tab_store.setSelected(true);
-                break;
             case R.id.tab_msg:
                 fragment_msg.setVisibility(View.VISIBLE);
                 tab_msg.setSelected(true);
@@ -100,13 +91,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void resetTabColor(){
         tab_home.setSelected(false);
         tab_search.setSelected(false);
-        tab_store.setSelected(false);
         tab_msg.setSelected(false);
         tab_me.setSelected(false);
     }
     public void resetFragment(){
         fragment_home.setVisibility(View.INVISIBLE);
-        fragment_store.setVisibility(View.INVISIBLE);
         fragment_search.setVisibility(View.INVISIBLE);
         fragment_msg.setVisibility(View.INVISIBLE);
         fragment_me.setVisibility(View.INVISIBLE);
@@ -115,7 +104,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         if(System.currentTimeMillis() - exitTime > 2000){
-            Toast.makeText(this,"再按一次返回键退出", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"quit", Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
         }else {
             ActivityCollecter.finishAll();
