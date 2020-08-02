@@ -27,4 +27,31 @@
         <item name="tabTextAppearance">@style/MyCustomTabTextAppearanceMsg</item>
         <item name="tabSelectedTextColor">@color/xhsColor</item>
     </style>
+    <style name="XHSstatusbar" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowSoftInputMode">stateHidden</item>
+        <item name="android:textCursorDrawable">@drawable/textcursordrawable</item>
+        <item name="android:windowAnimationStyle">@style/noAnimation</item>
+        <item name="android:alertDialogTheme">@style/Mine_Dialog.Alert</item>
+    </style>
+    <style name="noAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+    <style name="Mine_Dialog.Alert" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <!--修改AlertDialog按钮的颜色-->
+        <item name="colorAccent">#E12830</item>
+    </style>
+
 </resources>

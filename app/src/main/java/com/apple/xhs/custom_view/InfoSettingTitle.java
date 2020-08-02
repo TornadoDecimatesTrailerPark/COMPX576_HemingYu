@@ -24,7 +24,7 @@ public class InfoSettingTitle extends RelativeLayout {
 
     @SuppressLint("NewApi")
     private void initUiView(Context context, AttributeSet attrs) {
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.InfoSettingTitle);
+        @SuppressLint("Recycle") TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.InfoSettingTitle);
 
     }
 

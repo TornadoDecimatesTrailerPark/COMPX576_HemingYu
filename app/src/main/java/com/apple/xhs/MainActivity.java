@@ -10,8 +10,6 @@ import androidx.annotation.Nullable;
 
 import com.base.BaseActivity;
 import com.collecter.ActivityCollecter;
-import com.example.compx576_heming_yu.R;
-
 import butterknife.BindView;
 
 
