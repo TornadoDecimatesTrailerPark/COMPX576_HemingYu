@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/intercept_register_google_plus"
+            android:drawableTop="@mipmap/login_register_google_plus"
             android:drawablePadding="5dp"
             android:text="@string/login_GooglePlus"
             android:textSize="12sp"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/intercept_register_twitter"
+            android:drawableTop="@mipmap/login_register_twitter"
             android:drawablePadding="5dp"
             android:text="@string/login_Twitter"
             android:textSize="12sp"
@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/intercept_register_facebook"
+            android:drawableTop="@mipmap/login_register_facebook"
             android:drawablePadding="5dp"
             android:text="@string/login_Facebook"
             android:layout_marginLeft="40dp"

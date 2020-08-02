@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.apple.xhs.custom_view.InfoSettingTitle
+<!--    <com.apple.xhs.custom_view.InfoSettingTitle
         android:id="@+id/infosetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,5 +125,5 @@
                 android:layout_height="15dp"
                 android:background="@color/backgroundcolor" />
         </LinearLayout>
-    </ScrollView>
+    </ScrollView>-->
 </LinearLayout>

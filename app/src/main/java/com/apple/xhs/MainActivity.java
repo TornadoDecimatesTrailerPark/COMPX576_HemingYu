@@ -2,35 +2,27 @@ package com.apple.xhs;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import androidx.annotation.Nullable;
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
-import com.base.BaseActivity;
 import com.collecter.ActivityCollecter;
+import com.base.BaseActivity;
+
 import butterknife.BindView;
 
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
-    @BindView(R.id.tab_home)
-    TextView tab_home;
-    @BindView(R.id.tab_search)
-    TextView tab_search;
-    @BindView(R.id.tab_msg)
-    TextView tab_msg;
-    @BindView(R.id.tab_me)
-    TextView tab_me;
 
-    @BindView(R.id.fragment_home)
-    View fragment_home;
-    @BindView(R.id.fragment_search)
-    View fragment_search;
-    @BindView(R.id.fragment_msg)
-    View fragment_msg;
-    @BindView(R.id.fragment_me)
-    View fragment_me;
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+    @BindView(R.id.tag_main_page) TextView tag_main_page;
+    @BindView(R.id.tag_personal_info) TextView tag_personal_info;
+
+
+    @BindView(R.id.home_viewpager) View home_viewpager;
+    @BindView(R.id.home_personal_info) View home_personal_info;
+
 
     long exitTime;
 
@@ -50,14 +42,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @SuppressLint("ResourceAsColor")
     private void initView() {
         resetFragment();
-        tab_home.setSelected(true);
+        tag_main_page.setSelected(true);
 
-        tab_home.setOnClickListener(this);
-        tab_search.setOnClickListener(this);
-        tab_msg.setOnClickListener(this);
-        tab_me.setOnClickListener(this);
+        tag_main_page.setOnClickListener(this);
+        tag_personal_info.setOnClickListener(this);
 
-        fragment_home.setVisibility(View.VISIBLE);
+        home_viewpager.setVisibility(View.VISIBLE);
 
     }
 
@@ -67,42 +57,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         resetTabColor();
         resetFragment();
         switch (view.getId()){
-            case R.id.tab_home:
-                fragment_home.setVisibility(View.VISIBLE);
-                tab_home.setSelected(true);
+            case R.id.tag_main_page:
+                home_viewpager.setVisibility(View.VISIBLE);
+                tag_main_page.setSelected(true);
                 break;
-            case R.id.tab_search:
-                fragment_search.setVisibility(View.VISIBLE);
-                tab_search.setSelected(true);
-                break;
-            case R.id.tab_msg:
-                fragment_msg.setVisibility(View.VISIBLE);
-                tab_msg.setSelected(true);
-                break;
-            case R.id.tab_me:
-                fragment_me.setVisibility(View.VISIBLE);
-                tab_me.setSelected(true);
+            case R.id.tag_personal_info:
+                home_personal_info.setVisibility(View.VISIBLE);
+                tag_personal_info.setSelected(true);
                 break;
         }
     }
     @SuppressLint("ResourceAsColor")
     public void resetTabColor(){
-        tab_home.setSelected(false);
-        tab_search.setSelected(false);
-        tab_msg.setSelected(false);
-        tab_me.setSelected(false);
+        tag_main_page.setSelected(false);
+        tag_personal_info.setSelected(false);
+
     }
     public void resetFragment(){
-        fragment_home.setVisibility(View.INVISIBLE);
-        fragment_search.setVisibility(View.INVISIBLE);
-        fragment_msg.setVisibility(View.INVISIBLE);
-        fragment_me.setVisibility(View.INVISIBLE);
+        home_viewpager.setVisibility(View.INVISIBLE);
+        home_personal_info.setVisibility(View.INVISIBLE);
+
     }
 
     @Override
     public void onBackPressed() {
         if(System.currentTimeMillis() - exitTime > 2000){
-            Toast.makeText(this,"quit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"再按一次返回键退出",Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
         }else {
             ActivityCollecter.finishAll();
