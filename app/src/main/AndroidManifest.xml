@@ -51,6 +51,7 @@
             android:theme="@style/XHSstatusbar" />
         <activity android:name=".custom_view.MineInfo"
             android:theme="@style/XHSstatusbar"/>
+        <activity android:name=".custom_view.noteEdit" android:theme="@style/XHSstatusbar"/>
     </application>
 
 </manifest>

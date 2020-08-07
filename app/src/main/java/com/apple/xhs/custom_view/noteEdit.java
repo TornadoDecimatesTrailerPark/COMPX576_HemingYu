@@ -27,7 +27,7 @@ import butterknife.BindView;
 
 
 
-public class noteEdit extends Activity{
+public class noteEdit extends BaseActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -35,4 +35,13 @@ public class noteEdit extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_edit_view);
     }
+    @Override
+    public int getContentViewId() {
+        return R.layout.home_camera;
+    }
+
+    /*@Override
+    public void onClick(View view) {
+
+    }*/
 }
