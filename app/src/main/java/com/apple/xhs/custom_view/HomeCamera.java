@@ -15,29 +15,36 @@ import androidx.annotation.RequiresApi;
 
 import com.apple.xhs.MainActivity;
 import com.apple.xhs.R;
+import com.base.BaseActivity;
 
 import butterknife.BindView;
 
-public class HomeCamera extends Activity /*implements View.OnClickListener*/ {
+public class HomeCamera extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.home_close_camera)
     ImageView home_close_camera;
     @BindView(R.id.home_video)
     ImageView home_video;
+    @BindView(R.id.home_note)ImageView home_note;
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.home_camera;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_camera);
-/*        initView();*/
+        setViewListener();
     }
 
-   /* @SuppressLint("ResourceAsColor")
-    private void initView() {
+    @SuppressLint("ResourceAsColor")
+    private void setViewListener() {
 
         home_close_camera.setOnClickListener(this);
         home_video.setOnClickListener(this);
+        home_note.setOnClickListener(this);
 
 
     }
@@ -50,9 +57,10 @@ public class HomeCamera extends Activity /*implements View.OnClickListener*/ {
                 startActivity(home_close_camera);
                 break;
             case R.id.home_video:
+            case R.id.home_note:
                 Intent home_video = new Intent(HomeCamera.this, noteEdit.class);
                 startActivity(home_video);
                 break;
         }
-    }*/
+    }
 }
