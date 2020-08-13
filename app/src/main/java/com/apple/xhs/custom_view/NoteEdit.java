@@ -27,7 +27,12 @@ import butterknife.BindView;
 
 
 
-public class noteEdit extends Activity{
+public class NoteEdit extends BaseActivity{
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.note_edit_view;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

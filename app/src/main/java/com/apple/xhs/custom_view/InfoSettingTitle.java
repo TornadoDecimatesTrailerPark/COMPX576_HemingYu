@@ -4,15 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
 import com.apple.xhs.R;
+
 
 public class InfoSettingTitle extends RelativeLayout {
     View parent,img;
@@ -20,10 +20,10 @@ public class InfoSettingTitle extends RelativeLayout {
 
     public InfoSettingTitle(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-       /* initUiView(context,attrs);*/
+        initUiView(context,attrs);
     }
 
-   /* @SuppressLint("NewApi")
+    @SuppressLint("NewApi")
     private void initUiView(Context context, AttributeSet attrs) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.InfoSettingTitle);
         String text = array.getString(R.styleable.InfoSettingTitle_setText);
@@ -39,19 +39,19 @@ public class InfoSettingTitle extends RelativeLayout {
         textViewDone.setText(textdone);
         textViewDone.setBackground(drawable);
         parent.setBackground(drawable1);
-    }*/
+    }
 
-    /*public void setTitleText(String str){
+    public void setTitleText(String str){
         textView.setText(str);
-    }*/
+    }
     public void setImgListener(OnClickListener listener) {
         img.setOnClickListener(listener);
     }
-   /* public void setDoneListener(OnClickListener listener) {
+    public void setDoneListener(OnClickListener listener) {
         textViewDone.setOnClickListener(listener);
-    }*/
+    }
 
-   /* public TextView getTextView() {
+    public TextView getTextView() {
         return textView;
-    }*/
+    }
 }

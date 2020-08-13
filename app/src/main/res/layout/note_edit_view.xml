@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <LinearLayout android:layout_height="70dp"
+    <com.apple.xhs.custom_view.InfoSettingTitle
+        android:id="@+id/send_note_title"
         android:layout_width="match_parent"
-        android:background="@color/xhsColor">
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        app:setText="Edit"
+        app:setDoneText="Post"
+        app:setBackground="@color/xhsColor"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"

@@ -75,13 +75,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tag_main_page.setSelected(true);
                 break;
             case R.id.tag_personal_info:
-                Intent tag_personal_info = new Intent(MainActivity.this, MineInfo.class);
-                startActivity(tag_personal_info);
+                startActivity(new Intent(MainActivity.this,MineInfo.class));
                 break;
             case R.id.tag_new_notes:
             case R.id.home_open_camera:
-                Intent tag_new_notes = new Intent(MainActivity.this, HomeCamera.class);
-                startActivity(tag_new_notes);
+                startActivity(new Intent(MainActivity.this,HomeCamera.class));
+           /*     Toast.makeText(this,"<clink, clink>", Toast.LENGTH_SHORT).show();*/
                 break;
         }
     }
