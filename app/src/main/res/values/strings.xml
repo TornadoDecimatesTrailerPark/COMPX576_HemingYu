@@ -12,4 +12,13 @@
     <string name="please_input_account">please input account</string>
     <string name="account">Account :</string>
     <string name="create_an_account">Create an Account</string>
+    <string name="image">Picture</string>
+    <string name="confirm">confirm</string>
+    <string name="all_images">all images</string>
+    <string name="confirm_format">%1$s(%2$d/%3$d)</string>
+    <string name="minnum">at least 1 picture</string>
+    <string name="maxnum">no more than %1$d pictures</string>
+    <string name="permission_storage_denied">Please turn on storage space permissions</string>
+    <string name="open_camera_failure">open_camera_failure</string>
+    <string name="permission_camera_denied">permission_camera_denied</string>
 </resources>

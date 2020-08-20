@@ -1,11 +1,11 @@
-/*
-package com.apple.xhs.custom_view;
+package com.apple.xhs.note;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,25 +18,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.apple.xhs.R;
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
+
+import com.apple.xhs.custom_view.InfoSettingTitle;
 import com.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.data.AddDataBmob;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.yuyh.library.imgsel.ImageLoader;
-import com.yuyh.library.imgsel.ImgSelActivity;
-import com.yuyh.library.imgsel.ImgSelConfig;
+import com.imgsel.ImageLoader;
+import com.imgsel.ImgSelActivity;
+import com.imgsel.ImgSelConfig;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import me.xiaopan.sketch.SketchImageView;
+import me.panpf.sketch.SketchImageView;
 
 
 public class NoteEditView extends BaseActivity implements View.OnClickListener, TextWatcher {
@@ -50,10 +50,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     TextView limit;
     @BindView(R.id.note_add_pic)
     ImageView noteAddPic;
-    @BindView(R.id.authorbdlocation)
-    TextView authorbdlocation;
-    @BindView(R.id.showorhidearea)
-    TextView showorhidearea;
+
 
     @BindView(R.id.note_nanren)
     CheckBox noteNanren;
@@ -78,11 +75,9 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     String context;
     List<String> getCheckData = new ArrayList<>();
     List<CheckBox> checkItem = new ArrayList<>();
-    String[] strings = {"男人", "护肤", "居家", "时尚", "美食", "运动", "旅行", "彩妆", "母婴"};
+    String[] strings = {"Phone", "Furniture", "shampoo", "clothes", "cosmetics", "food", "trip", "fashion", "sneaker"};
     LinearLayout linearLayout;
     String addrStr, province;
-    LocationClient locationClient;
-    BDLocationListener locationListener;
     boolean isShowArea = false;
     private List<String> pathList = new ArrayList<>();
     ImgSelConfig config;
@@ -93,11 +88,11 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         return R.layout.note_edit_view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
-        getLocation();
         initViewListener();
         initCheckItem();
         initImageSelector();
@@ -121,25 +116,6 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
                 .build();
     }
 
-    private void getLocation() {
-        locationClient = new LocationClient(this);
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
-        option.setCoorType("bd0911");
-        //option.setScanSpan(2000);
-        option.setIsNeedAddress(true);
-        locationClient.setLocOption(option);
-        locationListener = new BDLocationListener() {
-            @Override
-            public void onReceiveLocation(BDLocation bdLocation) {
-                province = bdLocation.getProvince();
-                addrStr = bdLocation.getCity();
-                authorbdlocation.setText(province + addrStr);
-            }
-        };
-        locationClient.registerLocationListener(locationListener);
-        locationClient.start();
-    }
 
     private void initCheckItem() {
         checkItem.add(noteNanren);
@@ -161,8 +137,6 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         noteTitle.setOnClickListener(this);
         noteContext.setOnClickListener(this);
         noteAddPic.setOnClickListener(this);
-
-        showorhidearea.setOnClickListener(this);
         noteTitle.addTextChangedListener(this);
         noteContext.addTextChangedListener(this);
         //复选框
@@ -200,15 +174,6 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
             case R.id.note_add_pic:
                 pathList.clear();
                 ImgSelActivity.startActivity(this, config, REQUEST_CODE);  // 开启图片选择器
-                break;
-            case R.id.showorhidearea:
-                if (isShowArea == true) {
-                    isShowArea = false;
-                    showorhidearea.setText("隐藏当前位置");
-                } else {
-                    isShowArea = true;
-                    showorhidearea.setText("显示当前位置");
-                }
                 break;
             case R.id.note_nanren:
             case R.id.note_hufu:
@@ -331,4 +296,3 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         }
     }
 }
-*/
