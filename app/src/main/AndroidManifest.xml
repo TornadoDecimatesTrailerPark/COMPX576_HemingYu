@@ -28,6 +28,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name="com.apple.initbmob.InitBmob"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -53,6 +54,21 @@
             android:theme="@style/XHSstatusbar"/>
         <activity android:name=".custom_view.NoteEdit"
             android:theme="@style/XHSstatusbar"/>
+        <activity
+            android:name=".note.NoteEditView"
+            android:theme="@style/XHSstatusbar" />
+        <activity
+            android:name=".note.NoteEditShowBigPic"
+            android:theme="@style/Welcome" />
+        <activity android:name="com.imgsel.ImgSelActivity" android:theme="@style/XHSstatusbar"/>
+        <meta-data android:name="APP_ID" android:value="${applicationId}"/>
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.apple.xhs.BmobContentProvider">
+        </provider>
     </application>
 
 </manifest>

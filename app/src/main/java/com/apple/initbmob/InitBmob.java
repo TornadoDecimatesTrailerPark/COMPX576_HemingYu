@@ -1,17 +1,18 @@
 package com.apple.initbmob;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
-
 import com.bean.Note;
 
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
-
+import cn.bmob.v3.BmobConfig;
 
 
 public class InitBmob extends Application {
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
     private static List<Note> list;
     private static int guanzhu = 0;
@@ -23,8 +24,15 @@ public class InitBmob extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-//        SDKInitializer.initialize(getApplicationContext());
-        Bmob.initialize(getApplicationContext(),"fee0209c74bf24304798d10e746fd280");
+      /*  SDKInitializer.initialize(getApplicationContext());*/
+       /* Bmob.initialize(getApplicationContext(),"7909b406e0c17b975ca69afa3a2a23da");*/
+        BmobConfig config =new BmobConfig.Builder(getApplicationContext())
+                .setApplicationId("7909b406e0c17b975ca69afa3a2a23da")//设置appkey
+                .setConnectTimeout(30)//请求超时时间（单位为秒）：默认15s
+                .setUploadBlockSize(1024*1024)//文件分片上传时每片的大小（单位字节），默认512*1024
+                .setFileExpiration(2500)//文件的过期时间(单位为秒)：默认1800s
+                .build();
+        Bmob.initialize(config);
     }
 
     public static Context getContext(){

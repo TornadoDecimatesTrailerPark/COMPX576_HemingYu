@@ -6,6 +6,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="Welcome" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowSoftInputMode">stateHidden</item>
+        <item name="android:textCursorDrawable">@drawable/textcursordrawablenull</item>
+    </style>
     <style name="NoteTagCheck" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/note_tag_check</item>
         <item name="android:layout_width">0dp</item>
