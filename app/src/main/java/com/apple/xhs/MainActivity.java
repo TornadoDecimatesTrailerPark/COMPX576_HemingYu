@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apple.xhs.custom_view.HomeCamera;
-import com.apple.xhs.custom_view.MineInfo;
+import com.apple.xhs.custom_view.MineUserInfoSetting;
 import com.collecter.ActivityCollecter;
 import com.base.BaseActivity;
 
@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tag_main_page.setSelected(true);
                 break;
             case R.id.tag_personal_info:
-                startActivity(new Intent(MainActivity.this,MineInfo.class));
+                startActivity(new Intent(MainActivity.this, MineUserInfoSetting.class));
                 break;
             case R.id.tag_new_notes:
             case R.id.home_open_camera:

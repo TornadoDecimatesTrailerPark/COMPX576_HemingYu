@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.apple.xhs.custom_view.InfoSettingTitle
+        android:id="@+id/reset_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:setText="Change your name"
+        app:setDoneText="Submit"
+        app:setBackground="@drawable/setting_toolbar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="13sp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/textGrayColor"
+        android:background="@color/backgroundcolor" />
+    <EditText
+        android:id="@+id/my_new_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="Red fox"
+        android:textSize="16sp"
+        android:background="@null"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundcolor"/>
+</LinearLayout>

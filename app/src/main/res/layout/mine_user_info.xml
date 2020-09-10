@@ -34,7 +34,7 @@
                 android:layout_height="100dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-                <ImageView
+                <me.panpf.sketch.SketchImageView
                     android:id="@+id/img_user_head"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
