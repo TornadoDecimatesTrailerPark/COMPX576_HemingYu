@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 
 import com.base.BaseActivity;
 import com.bean.MyUser;
+import com.collecter.ErrorCollecter;
 
 import butterknife.BindView;
 import cn.bmob.v3.exception.BmobException;
@@ -52,10 +53,26 @@ public class Login extends BaseActivity implements View.OnClickListener {
                 if(name.equals("")||pass.equals("")){
                     Toast.makeText(getApplicationContext(),"account or password should not be empty",Toast.LENGTH_SHORT).show();
                     return;
-                }else {
-                    Intent intent=new Intent(Login.this,MainActivity.class);
-                    startActivity(intent);
-                }
+                } final MyUser user = new MyUser();
+                user.setUsername(name);
+                user.setPassword(pass);
+                user.login(new SaveListener<MyUser>() {
+                    @Override
+                    public void done(MyUser myUser, BmobException e) {
+                        if(e==null){
+                            Toast.makeText(getApplicationContext(),"successful",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Login.this,MainActivity.class));
+                            finish();
+                        }else {
+                            login.setText("relog");
+                            Toast.makeText(getApplicationContext(), ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                break;
+            case R.id.go_logon:
+                startActivity(new Intent(Login.this,Logon.class));
+                break;
         }
     }
 }
