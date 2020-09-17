@@ -56,9 +56,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     List<Note> data = new ArrayList<>();
 
 
-    private int[] imgs = {R.mipmap.arrow_icon_right, R.mipmap.arrow_icon_right, R.mipmap.arrow_icon_right, R.mipmap.arrow_icon_right, R.mipmap.arrow_icon_right,};
+    private int[] imgs = {R.mipmap.ic_home_camera, R.mipmap.ic_home_add_notes, R.mipmap.login_register_google_plus, R.mipmap.login_register_facebook, R.mipmap.login_register_twitter,};
     private String[] titles = {"aaa", "bbb", "ccc", "ddd", "eee"};
-    private String[] usernames = {"asda", "Wacke", "asd", "asd", "ajia"};
+    private String[] usernames = {"tom", "Wack", "ash", "dave", "ajia"};
 
 int dataSize=0;
     long exitTime;
