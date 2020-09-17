@@ -77,6 +77,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     List<CheckBox> checkItem = new ArrayList<>();
     String[] strings = {"Phone", "Furniture", "shampoo", "clothes", "cosmetics", "food", "trip", "fashion", "sneaker"};
     LinearLayout linearLayout;
+
     private List<String> pathList = new ArrayList<>();
     ImgSelConfig config;
     private static final int REQUEST_CODE = 0;
@@ -96,7 +97,12 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         initImageSelector();
     }
 
-    private ImageLoader loader = (ImageLoader) (context, path, imageView) -> Glide.with(context).load(path).into(imageView);
+    private ImageLoader loader = new ImageLoader() {
+        @Override
+        public void displayImage(Context context, String path, ImageView imageView) {
+            Glide.with(context).load(path).into(imageView);
+        }
+    };
 
     //ImageSelector框架设置UI及功能
     private void initImageSelector() {

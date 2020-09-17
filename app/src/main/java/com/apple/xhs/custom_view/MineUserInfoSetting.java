@@ -35,7 +35,7 @@ import me.panpf.sketch.process.CircleImageProcessor;
 import me.panpf.sketch.request.DisplayOptions;
 
 
-import static com.data.AddDataBmob.compressBitmap;
+/*import static com.data.AddDataBmob.compressBitmap;*/
 
 
 
@@ -128,8 +128,8 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
             default:
                 String img_url=uriChange(data);
                 String tempPath = Environment.getExternalStorageDirectory().getPath()
-                        + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
-                compressBitmap(img_url,tempPath);
+                        /*+ "/XHS/temp/" + System.currentTimeMillis() */+ ".jpg";
+              /*  compressBitmap(img_url,tempPath);*/
                 Log.i("bmob","Url:" + tempPath);
                 head_icon.displayImage(tempPath);
 

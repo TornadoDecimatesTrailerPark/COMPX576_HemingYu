@@ -108,62 +108,6 @@ public class SelectDataBmob {
         });
     }
 
-    //模糊查询(笔记)
-    public void selectMore(final String ss){
-        BmobQuery<Note> query = new BmobQuery<Note>();
-        query.include("author");
-        query.findObjects(new FindListener<Note>() {
-            @Override
-            public void done(List<Note> list, BmobException e) {
-                AddDataBmob.addHistory(ss);
-                AddDataBmob.addHot(ss);
-                if (e==null){
-                    List<Note> newList = new ArrayList<>();
-                    for (Note note:list){
-                        if (note.getTitle().contains(ss)){
-                            newList.add(note);
-                        }
-                    }
-                    Log.i("bmob","结果个数：" + newList.size());
-                    if (newList.size()==0){
-//                        Toast.makeText(InitBmob.getContext(),"结果不存在",Toast.LENGTH_SHORT).show();
-                    }else {
-                        //代码块
-                    }
-                }else {
-                    Log.i("bmob","模糊查询失败" + e.getErrorCode() + e.getMessage());
-                }
-            }
-        });
-    }
-
-    //模糊查询(用户)
-    public void selectUser(final String ss){
-        BmobQuery<MyUser> query = new BmobQuery<MyUser>();
-        query.findObjects(new FindListener<MyUser>() {
-            @Override
-            public void done(List<MyUser> list, BmobException e) {
-                AddDataBmob.addHistory(ss);
-                AddDataBmob.addHot(ss);
-                if (e==null){
-                    List<MyUser> newList = new ArrayList<>();
-                    for (MyUser user:list){
-                        if (user.getNickname().contains(ss)){
-                            newList.add(user);
-                        }
-                    }
-                    Log.i("bmob","结果个数：" + newList.size());
-                    if (newList.size()==0){
-//                        Toast.makeText(InitBmob.getContext(),"结果不存在",Toast.LENGTH_SHORT).show();
-                    }else {
-                        //代码块
-                    }
-                }else {
-                    Log.i("bmob","模糊查询失败" + e.getErrorCode() + e.getMessage());
-                }
-            }
-        });
-    }
 
     //获取前16热门搜索
     public void selectHot(){

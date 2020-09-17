@@ -31,11 +31,18 @@
         android:layout_height="2dp"
         android:background="#e9e7e7" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/home_viewpager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="544dp"
-        android:background="@color/backgroundcolor" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#f2f2f2">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2.5dp"
+            android:layout_weight="1"/>
+    </RelativeLayout>
 
 
     <LinearLayout
