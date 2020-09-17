@@ -25,7 +25,7 @@ public class InitBmob extends Application {
         super.onCreate();
         context = getApplicationContext();
       /*  SDKInitializer.initialize(getApplicationContext());*/
-       /* Bmob.initialize(getApplicationContext(),"7909b406e0c17b975ca69afa3a2a23da");*/
+        Bmob.initialize(getApplicationContext(),"7909b406e0c17b975ca69afa3a2a23da");
         BmobConfig config =new BmobConfig.Builder(getApplicationContext())
                 .setApplicationId("7909b406e0c17b975ca69afa3a2a23da")//设置appkey
                 .setConnectTimeout(30)//请求超时时间（单位为秒）：默认15s

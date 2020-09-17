@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -31,9 +32,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.home_open_camera)
     ImageView home_open_camera;
     @BindView(R.id.home_viewpager)
-    View home_viewpager;
-    @BindView(R.id.home_personal_info)
-    View home_personal_info;
+    ViewPager home_viewpager;
 
     long exitTime;
 
@@ -94,7 +93,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     public void resetFragment() {
         home_viewpager.setVisibility(View.INVISIBLE);
-        home_personal_info.setVisibility(View.INVISIBLE);
 
     }
 

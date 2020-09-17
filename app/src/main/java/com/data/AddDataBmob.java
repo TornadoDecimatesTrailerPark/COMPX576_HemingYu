@@ -164,55 +164,6 @@ public class AddDataBmob {
         });
     }
 
-    //添加多对多关系(关注）
-    public static void addAttention(final String otherId){
-        final MyUser my = BmobUser.getCurrentUser(MyUser.class);
-        String cloudCodeName = "addGuanzhu";
-        JSONObject params = new JSONObject();
-        try {
-            params.put("myId",my.getObjectId());
-            params.put("otherId",otherId);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        AsyncCustomEndpoints cloudCode = new AsyncCustomEndpoints();
-        cloudCode.callEndpoint(cloudCodeName,params, new CloudCodeListener() {
-            @Override
-            public void done(Object o, BmobException e) {
-                if (e==null){
-                    Toast.makeText(InitBmob.getContext(),o.toString(),Toast.LENGTH_SHORT).show();
-                    InitBmob.setGuanzhu(InitBmob.getGuanzhu()+1);
-                    Log.i("bmob","执行云端关注方法成功，返回：" + o.toString());
-                }else {
-                    Toast.makeText(InitBmob.getContext(),ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
-                    Log.i("bmob","执行云端关注方法失败：" + e.getMessage() + e.getErrorCode());
-                }
-            }
-        });
-    }
-
-    //添加收藏
-    public static void addLikes(final Note note){
-        final MyUser my = BmobUser.getCurrentUser(MyUser.class);
-        BmobRelation relation = new BmobRelation();
-        relation.add(note);
-        my.setLikes(relation);
-        my.update(new UpdateListener() {
-            @Override
-            public void done(BmobException e) {
-                if(e==null){
-                    UpdateDataBmob.clickUp(note);
-                    Toast.makeText(InitBmob.getContext(),"收藏成功",Toast.LENGTH_SHORT).show();
-                    InitBmob.setShoucang(InitBmob.getShoucang()+1);
-                    Log.i("bmob","收藏成功：" + "用户<" + my.getNickname() + ">收藏了笔记<" + note.getTitle() + ">");
-                }else{
-                    Toast.makeText(InitBmob.getContext(),ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
-                    Log.i("bmob","收藏失败："+e.getMessage() + e.getErrorCode());
-                }
-            }
-        });
-    }
-
     //添加历史搜索
     public static void addHistory(String ss){
         if (ss.equals("")){

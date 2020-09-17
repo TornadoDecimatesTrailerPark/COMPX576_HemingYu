@@ -25,29 +25,6 @@
             android:src="@mipmap/ic_home_camera" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/home_tablayout"
-            style="@style/MyCustomTabLayoutHome"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_weight="5"
-            app:tabGravity="center"
-            app:tabMode="scrollable" />
-
-        <ImageView
-            android:id="@+id/home_scrollview_showMore"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:padding="18dp"
-            android:src="@mipmap/icon_expand_down" />
-    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -57,13 +34,8 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/home_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="544dp"
         android:background="@color/backgroundcolor" />
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/home_personal_info"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/toolbar_search" />
 
 
     <LinearLayout

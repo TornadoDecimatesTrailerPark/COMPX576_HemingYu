@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 
 import com.apple.xhs.MainActivity;
 import com.apple.xhs.R;
+import com.apple.xhs.note.NoteEditView;
 import com.base.BaseActivity;
 
 import butterknife.BindView;
@@ -58,7 +59,7 @@ public class HomeCamera extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.home_video:
             case R.id.home_note:
-                Intent home_video = new Intent(HomeCamera.this, NoteEdit.class);
+                Intent home_video = new Intent(HomeCamera.this, NoteEditView.class);
                 startActivity(home_video);
                 break;
         }

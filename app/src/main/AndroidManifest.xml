@@ -52,14 +52,18 @@
         <activity
             android:name=".Logon"
             android:theme="@style/XHSstatusbar" />
-        <activity android:name=".custom_view.MineSettingID" android:theme="@style/XHSstatusbar"></activity>
-        <activity android:name=".custom_view.MineSettingName" android:theme="@style/XHSstatusbar"></activity>
-        <activity android:name=".custom_view.MineSettingSign" android:theme="@style/XHSstatusbar"></activity>
+        <activity
+            android:name=".custom_view.MineSettingID"
+            android:theme="@style/XHSstatusbar" />
+        <activity
+            android:name=".custom_view.MineSettingName"
+            android:theme="@style/XHSstatusbar" />
+        <activity
+            android:name=".custom_view.MineSettingSign"
+            android:theme="@style/XHSstatusbar" />
         <activity
             android:name=".custom_view.HomeCamera"
             android:theme="@style/XHSstatusbar" />
-        <activity android:name=".custom_view.NoteEdit"
-            android:theme="@style/XHSstatusbar"/>
         <activity
             android:name=".note.NoteEditView"
             android:theme="@style/XHSstatusbar" />

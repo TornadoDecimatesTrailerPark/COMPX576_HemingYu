@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import com.apple.xhs.R;
 
-/**
- * Created by limeng on 2017/7/24.
- */
+
 
 public class UserInfoRow extends RelativeLayout {
     TextView item,name;

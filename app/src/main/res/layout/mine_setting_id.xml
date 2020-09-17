@@ -11,7 +11,7 @@
         app:setText="Change your ID"
         app:setDoneText="Submit"
         app:setBackground="@drawable/setting_toolbar"/>
-    <TextView
+<!--    <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:textSize="13sp"
@@ -19,7 +19,7 @@
         android:gravity="center_vertical"
         android:textColor="@color/textGrayColor"
         android:background="@color/backgroundcolor"
-        android:text="One account, one chance, like real life"/>
+        android:text="One account, one chance, like real life"/>-->
     <EditText
         android:id="@+id/id_reset"
         android:layout_width="match_parent"
