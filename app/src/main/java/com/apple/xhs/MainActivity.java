@@ -27,6 +27,8 @@ import com.apple.initbmob.InitBmob;
 import com.apple.util.MyRecyclerViewAdapter;
 import com.apple.xhs.custom_view.HomeCamera;
 import com.apple.xhs.custom_view.MineUserInfoSetting;
+import com.apple.xhs.custom_view.NoteShow;
+import com.apple.xhs.note.NoteScan;
 import com.bean.Note;
 import com.collecter.ActivityCollecter;
 import com.base.BaseActivity;
@@ -54,13 +56,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.home_open_camera)
     ImageView home_open_camera;
     List<Note> data = new ArrayList<>();
+    @BindView(R.id.home_item)
+    RecyclerView home_item;
 
 
     private int[] imgs = {R.mipmap.ic_home_camera, R.mipmap.ic_home_add_notes, R.mipmap.login_register_google_plus, R.mipmap.login_register_facebook, R.mipmap.login_register_twitter,};
-    private String[] titles = {"aaa", "bbb", "ccc", "ddd", "eee"};
-    private String[] usernames = {"tom", "Wack", "ash", "dave", "ajia"};
+    private String[] titles = {"The first note", "bbb", "ccc", "ddd", "eee"};
+    private String[] usernames = {"Trump", "Wack", "Ash", "Dave", "Ajia"};
 
-int dataSize=0;
+    int dataSize = 0;
     long exitTime;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -93,8 +97,7 @@ int dataSize=0;
         tag_personal_info.setOnClickListener(this);
         tag_new_notes.setOnClickListener(this);
         home_open_camera.setOnClickListener(this);
-
-
+        home_item.setOnClickListener(this);
 
 
     }
@@ -111,8 +114,10 @@ int dataSize=0;
             case R.id.tag_new_notes:
             case R.id.home_open_camera:
                 startActivity(new Intent(MainActivity.this, HomeCamera.class));
-                /*     Toast.makeText(this,"<clink, clink>", Toast.LENGTH_SHORT).show();*/
                 break;
+            case R.id.home_item:
+                Toast.makeText(this, "<clink, clink>", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, NoteShow.class));
         }
     }
 
@@ -120,7 +125,7 @@ int dataSize=0;
     public void resetTabColor() {
         tag_main_page.setSelected(false);
         tag_personal_info.setSelected(false);
-
+        home_item.setSelected(false);
     }
 
     public void resetFragment() {
@@ -143,16 +148,17 @@ int dataSize=0;
     protected void onDestroy() {
         super.onDestroy();
     }
-    public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder>{
+
+    public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
         @NonNull
         @Override
         //加载布局文件并返回MyViewHolder对象
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             //创建view对象
-            View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.main_item,parent,false);
+            View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.main_item, parent, false);
 
             //创建MyViewHolder对象
-            MyViewHolder myViewHolder=new MyViewHolder(view);
+            MyViewHolder myViewHolder = new MyViewHolder(view);
             return myViewHolder;
         }
 
@@ -170,27 +176,32 @@ int dataSize=0;
             //获取列表条目总数
             return titles.length;
         }
-        class MyViewHolder extends RecyclerView.ViewHolder{
+
+        class MyViewHolder extends RecyclerView.ViewHolder {
             //初始化控件
-            ImageView img,head;
-            TextView title,username;
+            ImageView img, head;
+            TextView title, username;
+
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
-                img=itemView.findViewById(R.id.home_item_img);
-                title=itemView.findViewById(R.id.home_item_title);
-                username=itemView.findViewById(R.id.home_item_username);
+                img = itemView.findViewById(R.id.home_item_img);
+                title = itemView.findViewById(R.id.home_item_title);
+                username = itemView.findViewById(R.id.home_item_username);
             }
         }
     }
-    public class space_item extends RecyclerView.ItemDecoration{
+
+    public class space_item extends RecyclerView.ItemDecoration {
         //设置item的间距
-        private int space=5;
-        public space_item(int space){
-            this.space=space;
+        private int space = 5;
+
+        public space_item(int space) {
+            this.space = space;
         }
-        public void getItemOffsets(Rect outRect,View view,RecyclerView parent,RecyclerView.State state){
-            outRect.bottom=space;
-            outRect.top=space;
+
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.bottom = space;
+            outRect.top = space;
         }
     }
 
