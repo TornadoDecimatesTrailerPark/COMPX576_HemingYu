@@ -6,43 +6,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_login"
+        android:text="Log On"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_marginTop="35dp"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="35dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/login_register_google_plus"
-            android:drawablePadding="5dp"
-            android:text="@string/login_GooglePlus"
-            android:textSize="12sp"
-            android:layout_marginRight="40dp"
-            android:gravity="center" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/login_register_twitter"
-            android:drawablePadding="5dp"
-            android:text="@string/login_Twitter"
-            android:textSize="12sp"
-            android:gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/login_register_facebook"
-            android:drawablePadding="5dp"
-            android:text="@string/login_Facebook"
-            android:layout_marginLeft="40dp"
-            android:textSize="12sp"
-            android:gravity="center"/>
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +26,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Log on"
+            android:text="Log On"
             android:textSize="15sp"
             android:textColor="#b9b8b8"
             android:gravity="center"
@@ -71,14 +39,14 @@
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="700px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/login_textview_shape">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:text="Account"
             android:paddingLeft="7dp"
@@ -86,18 +54,18 @@
             android:textSize="16sp"/>
         <EditText
             android:id="@+id/logon_user_name"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="40dp"
             android:background="@null"
             android:textSize="16sp"
-            android:hint="Enter your account"/>
+            android:hint="Please input your account"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="700px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_textview_shape">
         <TextView
             android:layout_width="wrap_content"
@@ -108,19 +76,19 @@
             android:textSize="16sp"/>
         <EditText
             android:id="@+id/logon_user_pass"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="40dp"
             android:background="@null"
             android:textSize="16sp"
             android:inputType="textPassword"
-            android:hint="Enter your password"/>
+            android:hint="Please input your password"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="700px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_textview_shape">
         <TextView
             android:layout_width="wrap_content"
@@ -131,42 +99,42 @@
             android:textSize="16sp"/>
         <EditText
             android:id="@+id/logon_user_pass_aga"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="40dp"
             android:background="@null"
             android:textSize="16sp"
             android:inputType="textPassword"
-            android:hint="Enter password again"/>
+            android:hint="Please input your password"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="700px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_textview_shape">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="E-mail"
+            android:text="Email"
             android:paddingLeft="7dp"
             android:paddingRight="10dp"
             android:textSize="16sp"/>
         <EditText
             android:id="@+id/logon_user_email"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="40dp"
             android:background="@null"
             android:textSize="16sp"
-            android:hint="Enter your E-mail"/>
+            android:hint="Please input your Email"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/bt_logon"
         android:layout_width="230dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Log On"
+        android:layout_marginTop="10dp"
+        android:text="Log on"
         android:textSize="16sp"
         android:textColor="#fff"
         android:layout_gravity="center"
@@ -179,5 +147,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Already log on? Click here"/>
+        android:text="Already have account? Click to log in"/>
+ 
+
+  
 </LinearLayout>

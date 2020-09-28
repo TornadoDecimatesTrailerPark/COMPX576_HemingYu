@@ -1,6 +1,7 @@
 package com.data;
 
 
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -8,6 +9,7 @@ import com.apple.initbmob.InitBmob;
 import com.bean.MyUser;
 import com.bean.Note;
 import com.collecter.ErrorCollecter;
+
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
+
 
 
 public class UpdateDataBmob {

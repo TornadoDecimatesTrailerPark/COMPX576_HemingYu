@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.apple.xhs">
@@ -16,73 +17,87 @@
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
-    <uses-permission
-        android:name="android.permission.READ_LOGS"
+    <uses-permission android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission
-        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name="com.apple.initbmob.InitBmob"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:requestLegacyExternalStorage="true"
-        tools:targetApi="q">
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="t6nxEyfy6OHP8CWTdrM7UkjWQG3clfB0" />
         <activity
-            android:name=".Login">
+            android:name=".Login"
+            android:theme="@style/Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/XHSstatusbar">
-        </activity>
-        <activity android:name=".custom_view.MineUserInfoSetting" android:theme="@style/XHSstatusbar"/>
+            android:theme="@style/XHSstatusbar"></activity>
         <activity
             android:name=".Logon"
+            android:theme="@style/Welcome"></activity>
+        <activity
+            android:name=".ForgetPass"
+            android:theme="@style/Welcome"></activity>
+        <activity
+            android:name=".five_fragment.mine_activity.MineUserInfoSetting"
+            android:theme="@style/XHSstatusbar"></activity>
+        <activity
+            android:name=".five_fragment.mine_activity.MineSettingName"
+            android:theme="@style/XHSstatusbar"></activity>
+        <activity
+            android:name=".five_fragment.mine_activity.MineSettingID"
+            android:theme="@style/XHSstatusbar"></activity>
+        <activity
+            android:name=".five_fragment.mine_activity.MineSettingSign"
             android:theme="@style/XHSstatusbar" />
         <activity
-            android:name=".custom_view.MineSettingID"
-            android:theme="@style/XHSstatusbar" />
-        <activity
-            android:name=".custom_view.MineSettingName"
-            android:theme="@style/XHSstatusbar" />
-        <activity android:name=".custom_view.NoteShow"/>
-        <activity
-            android:name=".custom_view.MineSettingSign"
-            android:theme="@style/XHSstatusbar" />
-        <activity
-            android:name=".custom_view.HomeCamera"
-            android:theme="@style/XHSstatusbar" />
+            android:name=".five_fragment.home_activity.HomeOpenCamera"
+            android:theme="@style/Welcome" />
         <activity
             android:name=".note.NoteEditView"
+            android:theme="@style/XHSstatusbar" />
+
+        <activity
+            android:name=".note.NoteScan"
+            android:theme="@style/CollapingTheme"></activity>
+        <activity
+            android:name=".note.SelfNoteScan"
             android:theme="@style/XHSstatusbar" />
         <activity
             android:name=".note.NoteEditShowBigPic"
             android:theme="@style/Welcome" />
-        <activity android:name="com.imgsel.ImgSelActivity" android:theme="@style/XHSstatusbar"/>
+        <activity
+            android:name=".note.NoteAllPinglun"
+            android:theme="@style/XHSstatusbar"/>
+        <activity android:name=".searchwhole.SearchMain"
+            android:theme="@style/SearchMain"/>
+        <activity android:name=".searchwhole.SearchWholeItem"
+            android:theme="@style/XHSstatusbar"/>
+        <activity android:name=".five_fragment.mine_activity.ChangePassword"
+            android:theme="@style/XHSstatusbar"/>
+        <activity android:name="com.yuyh.library.imgsel.ImgSelActivity" android:theme="@style/XHSstatusbar"/>
         <meta-data android:name="APP_ID" android:value="${applicationId}"/>
-        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
+        <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
         </provider>
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.apple.xhs.BmobContentProvider">
-        </provider>
+        <service android:name="com.baidu.location.f" android:enabled="true"
+            android:process=":remote">
+        </service>
     </application>
-
 </manifest>

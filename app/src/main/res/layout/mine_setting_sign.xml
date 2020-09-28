@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:setText="Introduction"
-        app:setDoneText="Submit"
+        app:setDoneText="Confirm"
         app:setBackground="@drawable/setting_toolbar"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Try to pretend you are not showing off"
+        android:text="Introduce youself"
         android:textSize="13sp"
         android:paddingLeft="20dp"
         android:gravity="center_vertical"

@@ -19,7 +19,7 @@ public class UserInfoRow extends RelativeLayout {
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.UserInfoRow);
+        TypedArray array = context.obtainStyledAttributes(attrs,R.styleable.UserInfoRow);
         String item_title = array.getString(R.styleable.UserInfoRow_setItemTitle);
         String name_text = array.getString(R.styleable.UserInfoRow_setNameText);
         String hint_text = array.getString(R.styleable.UserInfoRow_setHintText);

@@ -1,18 +1,18 @@
 package com.apple.xhs.note;
 
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.apple.xhs.R;
 import com.base.BaseActivity;
 
 import butterknife.BindView;
-import me.panpf.sketch.SketchImageView;
-import me.panpf.sketch.zoom.ImageZoomer;
+import me.xiaopan.sketch.SketchImageView;
+import me.xiaopan.sketch.viewfun.zoom.ImageZoomer;
+
 
 
 public class NoteEditShowBigPic extends BaseActivity {
@@ -23,7 +23,6 @@ public class NoteEditShowBigPic extends BaseActivity {
         return R.layout.note_edit_showbigpic;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public class NoteEditShowBigPic extends BaseActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                overridePendingTransition(R.anim.showbigpic_out, R.anim.showbigpic_out_big);
+                overridePendingTransition(R.anim.showbigpic_out,R.anim.showbigpic_out_big);
             }
         });
     }

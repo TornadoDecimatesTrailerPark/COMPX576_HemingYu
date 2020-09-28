@@ -1,10 +1,10 @@
 package com.collecter;
 
 import android.app.Activity;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class ActivityCollecter {

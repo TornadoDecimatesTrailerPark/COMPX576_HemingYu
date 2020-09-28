@@ -8,24 +8,17 @@
         android:id="@+id/reset_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:setText="Change your name"
-        app:setDoneText="Submit"
+        app:setText="Change nickname"
+        app:setDoneText="Confirm"
         app:setBackground="@drawable/setting_toolbar"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textSize="13sp"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/textGrayColor"
-        android:background="@color/backgroundcolor" />
+
     <EditText
         android:id="@+id/my_new_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
-        android:text="Red fox"
+        android:text="Trump"
         android:textSize="16sp"
         android:background="@null"/>
     <View

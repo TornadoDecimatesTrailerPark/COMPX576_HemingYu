@@ -2,22 +2,27 @@ package com.apple.xhs;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
-import com.base.BaseActivity;
 import com.bean.MyUser;
+import com.base.BaseActivity;
 import com.collecter.ErrorCollecter;
 import com.data.UpdateDataBmob;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+
 
 
 public class Logon extends BaseActivity {
@@ -77,7 +82,7 @@ public class Logon extends BaseActivity {
             public void done(MyUser myUser, BmobException e) {
                 if (e==null){
                     UpdateDataBmob.UpdataIDNew(myUser.getObjectId());
-                    startActivity(new Intent(Logon.this, Login.class));
+                    startActivity(new Intent(Logon.this,Login.class));
                     finish();
                 }else {
                     Toast.makeText(getApplicationContext(), ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();

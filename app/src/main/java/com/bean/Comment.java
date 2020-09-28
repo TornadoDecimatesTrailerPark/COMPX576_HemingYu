@@ -3,6 +3,7 @@ package com.bean;
 import cn.bmob.v3.BmobObject;
 
 
+
 public class Comment extends BmobObject {
     private String content;
     private MyUser user;

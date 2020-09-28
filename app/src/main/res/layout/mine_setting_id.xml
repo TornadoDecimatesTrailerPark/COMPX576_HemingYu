@@ -8,18 +8,10 @@
         android:id="@+id/reset_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:setText="Change your ID"
-        app:setDoneText="Submit"
+        app:setText="Change ID"
+        app:setDoneText="Confirm"
         app:setBackground="@drawable/setting_toolbar"/>
-<!--    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textSize="13sp"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/textGrayColor"
-        android:background="@color/backgroundcolor"
-        android:text="One account, one chance, like real life"/>-->
+
     <EditText
         android:id="@+id/id_reset"
         android:layout_width="match_parent"
@@ -37,7 +29,8 @@
         android:paddingLeft="20dp"
         android:gravity="center_vertical"
         android:textColor="@color/textGrayColor"
-        android:background="@color/backgroundcolor" />
+        android:background="@color/backgroundcolor"
+        android:text="Only can be number"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"

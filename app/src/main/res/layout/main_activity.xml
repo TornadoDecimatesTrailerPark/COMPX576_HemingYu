@@ -1,91 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="right"
     android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/home_top"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/xhsColor"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <include layout="@layout/main_toolbar_search_merge" />
-
-        <ImageView
-            android:id="@+id/home_open_camera"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:src="@mipmap/ic_home_camera" />
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#e9e7e7" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="#f2f2f2">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/home_item"
+        android:layout_height="match_parent">
+        <fragment
+            android:id="@+id/fragment_home"
+            android:name="com.apple.xhs.five_fragment.home_activity.HomeFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2.5dp"
-            android:layout_weight="1"/>
-    </RelativeLayout>
-
-
+            android:layout_height="match_parent" />
+        <fragment
+            android:id="@+id/fragment_me"
+            android:name="com.apple.xhs.five_fragment.mine_activity.MeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
     <LinearLayout
-        android:id="@+id/navigation_footer_container"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom"
-        android:background="@color/xhsColor"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tag_main_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/main_page"
-            android:textColor="@color/white"
-           />
-
-        <ImageView
-            android:id="@+id/tag_new_notes"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center"
-
-            android:src="@mipmap/ic_home_add_notes" />
-
-        <TextView
-            android:id="@+id/tag_personal_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/profile"
-            android:textColor="@color/white" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#efefef"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/toolbar_search">
+            <TextView
+                android:id="@+id/tab_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/tab_main_home"
+                android:text="Main Page"
+                android:drawablePadding="-5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:textColor="@drawable/tab_text_color"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/tab_me"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Me"
+                android:drawableTop="@drawable/tab_main_me"
+                android:drawablePadding="-5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:textColor="@drawable/tab_text_color"
+                android:gravity="center" />
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

@@ -3,50 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/str_login"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="75dp"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="35dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/login_register_google_plus"
-            android:drawablePadding="5dp"
-            android:text="@string/login_GooglePlus"
-            android:textSize="12sp"
-            android:layout_marginRight="40dp"
-            android:gravity="center" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/login_register_twitter"
-            android:drawablePadding="5dp"
-            android:text="@string/login_Twitter"
-            android:textSize="12sp"
-            android:gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/login_register_facebook"
-            android:drawablePadding="5dp"
-            android:text="@string/login_Facebook"
-            android:layout_marginLeft="40dp"
-            android:textSize="12sp"
-            android:gravity="center"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="150dp"
         android:orientation="horizontal"
         android:layout_gravity="center">
         <View
@@ -56,11 +17,12 @@
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"/>
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="@string/login_name_pass"
             android:textSize="15sp"
+            android:gravity="center"
             android:textColor="#c7c7c7"
             android:layout_gravity="center_vertical"/>
         <View
@@ -75,27 +37,27 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/login_textview_shape">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="@string/account"
+            android:text="Account"
             android:paddingLeft="7dp"
             android:paddingRight="10dp"
             android:textSize="16sp"/>
         <EditText
             android:id="@+id/user_name"
             android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:background="@null"
             android:textSize="16sp"
-            android:hint="@string/please_input_account"/>
+            android:hint="Input your account"/>
     </LinearLayout>
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -105,26 +67,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/password"
+                android:text="Password"
                 android:paddingLeft="7dp"
                 android:paddingRight="10dp"
                 android:textSize="16sp"/>
             <EditText
                 android:id="@+id/user_pass"
                 android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:background="@null"
                 android:textSize="16sp"
                 android:inputType="textPassword"
-                android:hint="@string/please_input_password"/>
+                android:hint="Input your password"/>
         </LinearLayout>
     </FrameLayout>
     <Button
         android:id="@+id/bt_login"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:text="Login"
+        android:layout_marginTop="15dp"
+        android:text="Log In"
         android:textSize="16sp"
         android:textColor="#fff"
         android:layout_gravity="center"
@@ -134,14 +96,26 @@
     <RelativeLayout
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/go_logon"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="75dp"
-            android:text="@string/create_an_account"/>
+            android:layout_marginLeft="4dp"
+            android:text="Log on"/>
+        <TextView
+            android:id="@+id/go_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:text="Forget password？"/>
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="157dp"/>
+
+
 </LinearLayout>

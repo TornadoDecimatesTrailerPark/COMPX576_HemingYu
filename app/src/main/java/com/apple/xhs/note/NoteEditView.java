@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,27 +20,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-
-import com.apple.xhs.R;
-
 import com.apple.xhs.custom_view.InfoSettingTitle;
+import com.apple.xhs.R;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.data.AddDataBmob;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.imgsel.ImageLoader;
-import com.imgsel.ImgSelActivity;
-import com.imgsel.ImgSelConfig;
-
+import com.yuyh.library.imgsel.ImageLoader;
+import com.yuyh.library.imgsel.ImgSelActivity;
+import com.yuyh.library.imgsel.ImgSelConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import me.panpf.sketch.SketchImageView;
+import me.xiaopan.sketch.SketchImageView;
 
+/**
+ * Created by limeng on 2017/7/27.
+ */
 
 public class NoteEditView extends BaseActivity implements View.OnClickListener, TextWatcher {
     @BindView(R.id.send_note_title)
@@ -75,9 +80,12 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     String context;
     List<String> getCheckData = new ArrayList<>();
     List<CheckBox> checkItem = new ArrayList<>();
-    String[] strings = {"Phone", "Furniture", "shampoo", "clothes", "cosmetics", "food", "trip", "fashion", "sneaker"};
+    String[] strings = {"aa","bb","cc","dd","ee","ff","gg","hh","jj"};
     LinearLayout linearLayout;
-
+    String addrStr,province;
+    LocationClient locationClient;
+    BDLocationListener locationListener;
+    boolean isShowArea = false;
     private List<String> pathList = new ArrayList<>();
     ImgSelConfig config;
     private static final int REQUEST_CODE = 0;
@@ -87,7 +95,6 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         return R.layout.note_edit_view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +123,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     }
 
 
+
     private void initCheckItem() {
         checkItem.add(noteNanren);
         checkItem.add(noteHufu);
@@ -136,6 +144,8 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         noteTitle.setOnClickListener(this);
         noteContext.setOnClickListener(this);
         noteAddPic.setOnClickListener(this);
+
+
         noteTitle.addTextChangedListener(this);
         noteContext.addTextChangedListener(this);
         //复选框
@@ -153,7 +163,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId()){
             case R.id.my_setting_back:
 
                 finish();
@@ -163,10 +173,10 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
                 context = noteContext.getText().toString();
                 addCheckData();
                 //addCheckData();//返回数据到 getCheckData；
-                if (pathList.size() == 0) {
-                    Toast.makeText(this, "请至少添加一张照片", Toast.LENGTH_SHORT).show();
-                } else {
-                    AddDataBmob.addDataToNote(title, context, pathList, getCheckData);
+                if (pathList.size()==0){
+                    Toast.makeText(this,"Please add at least one image",Toast.LENGTH_SHORT).show();
+                }else {
+                    AddDataBmob.addDataToNote(title,context,pathList,getCheckData);
                     finish();
                 }
                 break;
@@ -205,7 +215,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         final SketchImageView img = new SketchImageView(this);
         TextView textView = new TextView(this);
         img.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
-        textView.setLayoutParams(new LinearLayout.LayoutParams(20, 300));
+        textView.setLayoutParams(new LinearLayout.LayoutParams(20,300));
         img.setScaleType(ImageView.ScaleType.CENTER_CROP);
         img.displayImage(s);
         linearLayout.addView(textView);
@@ -213,16 +223,16 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NoteEditView.this, NoteEditShowBigPic.class);
-                intent.putExtra("showbigpic", s);
+                Intent intent = new Intent(NoteEditView.this,NoteEditShowBigPic.class);
+                intent.putExtra("showbigpic",s);
                 startActivity(intent);
-                overridePendingTransition(R.anim.showbigpic_in, R.anim.showbigpic_out);
+                overridePendingTransition(R.anim.showbigpic_in,R.anim.showbigpic_out);
             }
         });
         img.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                popDeleteDialog(view, s);
+                popDeleteDialog(view,s);
                 return true;
             }
         });
@@ -230,15 +240,15 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
     private void popDeleteDialog(final View view, final String s) {
         new AlertDialog.Builder(this)
-                .setTitle("确定删除此图片吗？")
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setTitle("Delete this image?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         linearLayout.removeView(view);
                         pathList.remove(s);
                     }
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -248,14 +258,13 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
     private void addCheckData() {
         getCheckData.clear();
-        for (int i = 0; i < checkItem.size(); i++) {
-            if (checkItem.get(i).isChecked()) {
+        for(int i = 0;i<checkItem.size();i++){
+            if(checkItem.get(i).isChecked()){
                 getCheckData.add(strings[i]);
             }
         }
     }
-
-    //    private void deleteImage(View view){
+//    private void deleteImage(View view){
 //        for(int i = 0;i<addImageList.size();i++){
 //            if(addImageList.get(i)==view){
 //                linearLayout.removeViewAt();
@@ -275,21 +284,20 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void afterTextChanged(Editable editable) {
-        limit.setHint((30 - noteTitle.getText().toString().length()) + "");
+        limit.setHint((30-noteTitle.getText().toString().length())+"");
     }
-
-    public void checkLimit() {
+    public void checkLimit(){
         //感觉逻辑写的不好
         int check = 0;
-        for (CheckBox box : checkItem) {
-            if (box.isChecked() && check < 3) {
-                check++;
+        for(CheckBox box : checkItem){
+            if(box.isChecked()&&check<3){
+                check ++;
             }
         }
-        for (CheckBox box : checkItem) {
-            if (!box.isChecked() && check == 3) {
+        for (CheckBox box : checkItem){
+            if(!box.isChecked()&&check==3){
                 box.setClickable(false);
-            } else if (check < 3) {
+            }else if(check<3){
                 box.setClickable(true);
             }
         }
