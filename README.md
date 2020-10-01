@@ -1,3 +1,2 @@
-# xiaohongshu
-this is xiaohongshu
-仿小红书，练习项目
+# Compx576
+This is an Android application project that allows users to analyze their shopping experience
