@@ -2,28 +2,22 @@ package com.apple.xhs.searchwhole;
 
 import android.content.Intent;
 import android.graphics.Rect;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apple.util.MyRecyclerViewAdapter;
 import com.apple.xhs.R;
 import com.apple.xhs.custom_view.InfoSettingTitle;
-import com.apple.xhs.five_fragment.home_activity.home_fragment.HomeFragment_1;
 import com.apple.xhs.note.NoteScan;
 import com.base.BaseActivity;
 import com.bean.Note;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

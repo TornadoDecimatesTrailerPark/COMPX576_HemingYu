@@ -1,6 +1,6 @@
 package com.apple.util;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +14,6 @@ import com.bean.MyUser;
 import com.bean.Note;
 import com.data.AddDataBmob;
 import com.data.DeleteDataBmob;
-import com.data.UpdateDataBmob;
 
 import java.util.List;
 

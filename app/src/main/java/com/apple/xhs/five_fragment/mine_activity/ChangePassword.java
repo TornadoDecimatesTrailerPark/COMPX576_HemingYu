@@ -1,7 +1,7 @@
 package com.apple.xhs.five_fragment.mine_activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,9 +10,7 @@ import android.widget.Toast;
 import com.apple.xhs.R;
 import com.apple.xhs.custom_view.InfoSettingTitle;
 import com.base.BaseActivity;
-import com.bean.MyUser;
 import com.collecter.ErrorCollecter;
-import com.data.UpdateDataBmob;
 
 import butterknife.BindView;
 import cn.bmob.v3.BmobUser;

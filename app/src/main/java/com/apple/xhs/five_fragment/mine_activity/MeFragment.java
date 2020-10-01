@@ -8,8 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +17,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.apple.initbmob.InitBmob;
 import com.apple.xhs.Login;
 import com.apple.xhs.R;
 import com.apple.xhs.note.SelfNoteScan;
 import com.bean.MyUser;
-import com.bean.Note;
 import com.collecter.CacheCollecter;
 
-import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import me.xiaopan.sketch.SketchImageView;
 import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;

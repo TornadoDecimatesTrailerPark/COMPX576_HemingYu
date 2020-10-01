@@ -2,10 +2,8 @@ package com.apple.xhs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.View;
-import android.view.Window;
+import androidx.annotation.Nullable;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,8 +12,6 @@ import com.bean.MyUser;
 import com.base.BaseActivity;
 import com.collecter.ErrorCollecter;
 import com.data.UpdateDataBmob;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;

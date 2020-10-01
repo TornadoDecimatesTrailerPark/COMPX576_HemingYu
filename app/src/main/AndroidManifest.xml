@@ -93,7 +93,7 @@
             android:theme="@style/XHSstatusbar"/>
         <activity android:name="com.yuyh.library.imgsel.ImgSelActivity" android:theme="@style/XHSstatusbar"/>
         <meta-data android:name="APP_ID" android:value="${applicationId}"/>
-        <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
         </provider>
         <service android:name="com.baidu.location.f" android:enabled="true"

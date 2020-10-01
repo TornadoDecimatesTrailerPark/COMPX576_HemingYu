@@ -1,15 +1,12 @@
 package com.apple.xhs.custom_view;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.apple.initbmob.InitBmob;
 import com.apple.xhs.R;
 
 import me.xiaopan.sketch.SketchImageView;

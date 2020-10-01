@@ -2,12 +2,11 @@ package com.apple.xhs.five_fragment.home_activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.apple.xhs.MainActivity;
 import com.apple.xhs.R;
 import com.apple.xhs.five_fragment.mine_activity.MineUserInfoSetting;
 import com.apple.xhs.note.NoteEditView;

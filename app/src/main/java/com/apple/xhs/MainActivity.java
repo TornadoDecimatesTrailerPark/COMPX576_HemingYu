@@ -1,32 +1,17 @@
 package com.apple.xhs;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
+import androidx.annotation.Nullable;
+
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.apple.initbmob.InitBmob;
-import com.bean.Note;
 import com.collecter.ActivityCollecter;
 import com.base.BaseActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
