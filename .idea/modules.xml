@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/COMPX576_HemingYu.iml" filepath="$PROJECT_DIR$/.idea/modules/COMPX576_HemingYu.iml" group="COMPX576_HemingYu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/COMPX576_HemingYu-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/COMPX576_HemingYu-app.iml" group="COMPX576_HemingYu/app" />
+      <module fileurl="file://$PROJECT_DIR$/NewXiaoHongShu.iml" filepath="$PROJECT_DIR$/NewXiaoHongShu.iml" />
+      <module fileurl="file://E:/AndroidWORK/NewXiaoHongShu/XHS.iml" filepath="E:/AndroidWORK/NewXiaoHongShu/XHS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>
