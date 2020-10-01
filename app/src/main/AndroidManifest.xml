@@ -27,12 +27,14 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name="com.apple.initbmob.InitBmob"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/icon_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:targetApi="m">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="t6nxEyfy6OHP8CWTdrM7UkjWQG3clfB0" />
@@ -47,22 +49,22 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/XHSstatusbar"></activity>
+            android:theme="@style/XHSstatusbar" />
         <activity
             android:name=".Logon"
-            android:theme="@style/Welcome"></activity>
+            android:theme="@style/Welcome" />
         <activity
             android:name=".ForgetPass"
-            android:theme="@style/Welcome"></activity>
+            android:theme="@style/Welcome" />
         <activity
             android:name=".five_fragment.mine_activity.MineUserInfoSetting"
-            android:theme="@style/XHSstatusbar"></activity>
+            android:theme="@style/XHSstatusbar" />
         <activity
             android:name=".five_fragment.mine_activity.MineSettingName"
-            android:theme="@style/XHSstatusbar"></activity>
+            android:theme="@style/XHSstatusbar" />
         <activity
             android:name=".five_fragment.mine_activity.MineSettingID"
-            android:theme="@style/XHSstatusbar"></activity>
+            android:theme="@style/XHSstatusbar" />
         <activity
             android:name=".five_fragment.mine_activity.MineSettingSign"
             android:theme="@style/XHSstatusbar" />
@@ -75,7 +77,7 @@
 
         <activity
             android:name=".note.NoteScan"
-            android:theme="@style/CollapingTheme"></activity>
+            android:theme="@style/CollapingTheme" />
         <activity
             android:name=".note.SelfNoteScan"
             android:theme="@style/XHSstatusbar" />

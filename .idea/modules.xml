@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/COMPX-COMPX576_HemingYu.iml" filepath="$PROJECT_DIR$/.idea/modules/COMPX-COMPX576_HemingYu.iml" group="COMPX576_HemingYu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/COMPX-COMPX576_HemingYu-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/COMPX-COMPX576_HemingYu-app.iml" group="COMPX576_HemingYu/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/COMPX576_HemingYu.iml" filepath="$PROJECT_DIR$/.idea/modules/COMPX576_HemingYu.iml" group="COMPX576_HemingYu" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/COMPX576_HemingYu-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/COMPX576_HemingYu-app.iml" group="COMPX576_HemingYu/app" />
       <module fileurl="file://$PROJECT_DIR$/NewXiaoHongShu.iml" filepath="$PROJECT_DIR$/NewXiaoHongShu.iml" />
