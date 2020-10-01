@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:paddingTop="30dp"
-        android:text="没有相关内容"
+        android:text="No related notes"
         android:textSize="17sp"
         android:textColor="@color/gray"
         android:visibility="gone"/>

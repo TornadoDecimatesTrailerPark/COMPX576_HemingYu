@@ -207,12 +207,12 @@ public class AddDataBmob {
             public void done(BmobException e) {
                 if(e==null){
                     UpdateDataBmob.clickUp(note);
-                    Toast.makeText(InitBmob.getContext(),"收藏成功",Toast.LENGTH_SHORT).show();
+
                     InitBmob.setShoucang(InitBmob.getShoucang()+1);
-                    Log.i("bmob","收藏成功：" + "用户<" + my.getNickname() + ">收藏了笔记<" + note.getTitle() + ">");
+
                 }else{
                     Toast.makeText(InitBmob.getContext(),ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
-                    Log.i("bmob","收藏失败："+e.getMessage() + e.getErrorCode());
+
                 }
             }
         });
@@ -229,10 +229,10 @@ public class AddDataBmob {
             @Override
             public void done(BmobException e) {
                 if (e==null){
-                    Log.i("bmob","历史搜索添加成功");
+
                 }else {
                     Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
-                    Log.i("bmob","历史搜索添加失败" + e.getMessage() + e.getErrorCode());
+
                 }
             }
         });

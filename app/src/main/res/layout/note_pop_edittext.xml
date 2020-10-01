@@ -24,7 +24,7 @@
             android:background="@null"
             android:textSize="14sp"
             android:gravity="center_vertical"
-            android:hint="说说你的心得吧" />
+            android:hint="I would like to say..." />
         <View
             android:layout_width="1.5px"
             android:layout_height="match_parent"
