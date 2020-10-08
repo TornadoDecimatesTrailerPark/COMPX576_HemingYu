@@ -13,4 +13,5 @@
     <string name="open_camera_failure">open_camera_failure</string>
     <string name="permission_storage_denied">permission storage denied</string>
     <string name="permission_camera_denied">permission camera denied</string>
+    <string name="only_one_picture_can_be_uploaded">Only one picture can be uploaded.</string>
 </resources>

@@ -60,22 +60,22 @@ public class AddDataBmob {
                     String tempPath = cw.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath()
                             + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
                     compressBitmap(img,tempPath);
-                    Log.i("bmob","图片压缩成功，数目：" + (1) + "，地址：" + tempPath);
+                    Log.i("bmob","Image compressed successfully，number：" + (1) + "，path：" + tempPath);
                     imglist[0] = tempPath;
 
                 BmobFile.uploadBatch(imglist, new UploadBatchListener() {
                     @Override
                     public void onSuccess(List<BmobFile> list, List<String> urls) {
-                        Log.i("bmob","已上传图片数目：" + urls.size() + " 总数为：" + image.size());
+                        Log.i("bmob","Number of pictures uploaded: " + urls.size() + " totally：" + image.size());
                         if(urls.size()==image.size()){
                             imageList.addAll(list);
                             note.setImage(imageList);
-                            Log.i("bmob","图片上传成功："+imageList.size());
+                            Log.i("bmob","Picture uploaded successfully："+imageList.size());
                             note.save(new SaveListener<String>() {
                                 @Override
                                 public void done(String objectId, BmobException e) {
                                     if(e==null){
-                                        Log.i("bmob","笔记添加成功:" + note.getTitle());
+                                        Log.i("bmob","Notes added successfully: " + note.getTitle());
                                         InitBmob.setFabu(InitBmob.getFabu()+1);
                                         if (styles.size()!=0){
                                             for (String s:styles ) {
@@ -83,15 +83,15 @@ public class AddDataBmob {
                                                 noteToStyle(style,objectId);
                                             }
                                         }
-                                        Toast.makeText(InitBmob.getContext(), "笔记添加成功", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(InitBmob.getContext(), "Notes added successfully: ", Toast.LENGTH_SHORT).show();
                                     }else{
                                         Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
-                                        Log.i("bmob","笔记添加失败："+e.getMessage()+","+e.getErrorCode());
+                                        Log.i("bmob","Failed to add notes: "+e.getMessage()+","+e.getErrorCode());
                                     }
                                 }
                             });
                         }else {
-                            Log.i("bmob","等待上传图片数目：" + (image.size()-urls.size()));
+                            Log.i("bmob","Number of pictures waiting to be uploaded: " + (image.size()-urls.size()));
                         }
                     }
 
