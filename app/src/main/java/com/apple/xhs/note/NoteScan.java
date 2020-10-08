@@ -67,8 +67,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
     //user info
     @BindView(R.id.pic_viewpager)
     ViewPager pic_viewpager;
-    @BindView(R.id.userheadimage_toolbar)
-            SketchImageView userheadimagetoolbar;
+
     @BindView(R.id.username_toolbar)
             TextView usernametoolbar;
     @BindView(R.id.userheadimage_context)
@@ -135,7 +134,6 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         note_fabupinglun.setOnClickListener(this);
         pinglunSum.setOnClickListener(this);
         show_morePinglun.setOnClickListener(this);
-        userheadimagetoolbar.setOnClickListener(this);
         usernametoolbar.setOnClickListener(this);
         userheadimagecontext.setOnClickListener(this);
         usernamecontext.setOnClickListener(this);
@@ -145,7 +143,6 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
     private void setUserHeadImage() {
         displayOptions = new DisplayOptions();
         displayOptions.setImageProcessor(CircleImageProcessor.getInstance());
-        userheadimagetoolbar.setOptions(displayOptions);
         userheadimagecontext.setOptions(displayOptions);
         current_userhead_img.setOptions(displayOptions);
         keyHeight = getWindowManager().getDefaultDisplay().getHeight()/3;
@@ -181,7 +178,6 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         //sketchimageview.displayImage(note.getImage().get(0).getUrl());
         //评论区头像设为当前用户
         current_userhead_img.displayImage(currentUser.getHead().getUrl());
-        userheadimagetoolbar.displayImage(myUser.getHead().getUrl());
         usernametoolbar.setText(myUser.getNickname());
         userheadimagecontext.displayImage(myUser.getHead().getUrl());
         usernamecontext.setText(myUser.getNickname());
@@ -300,7 +296,6 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                 startActivity(intent);
                 break;
             case R.id.userheadimage_context:
-            case R.id.userheadimage_toolbar:
             case R.id.username_context:
             case R.id.username_toolbar:
                 Intent notelist = new Intent(NoteScan.this,SelfNoteScan.class);

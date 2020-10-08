@@ -6,9 +6,6 @@ import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.datatype.BmobRelation;
 
-/**
- * Created by xiong on 2017/7/24.
- */
 
 public class Note extends BmobObject{
 

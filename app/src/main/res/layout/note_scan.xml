@@ -42,18 +42,12 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:visibility="gone">
-                    <me.xiaopan.sketch.SketchImageView
-                        android:id="@+id/userheadimage_toolbar"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/xy_walkthroughs_account"/>
                     <TextView
                         android:id="@+id/username_toolbar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#ffffff"
-                        android:text="茶小翁"
+                        android:text="Trump"
                         android:textSize="15sp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp" />
