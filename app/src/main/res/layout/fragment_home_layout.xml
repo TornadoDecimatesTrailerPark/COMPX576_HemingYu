@@ -20,27 +20,6 @@
             android:layout_marginTop="11dp"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/home_tablayout"
-                android:layout_width="0dp"
-                android:layout_height="46dp"
-                android:layout_weight="5"
-                app:tabGravity="center"
-                app:tabMode="scrollable"
-                style="@style/MyCustomTabLayoutHome"/>
-        <ImageView
-            android:id="@+id/home_scrollview_showMore"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_weight="1"
-            android:padding="18dp"
-            android:background="@color/white"
-            android:src="@mipmap/icon_expand_down"/>
-    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -49,7 +28,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/home_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="475dp"
+        android:layout_height="575dp"
         android:background="@color/backgroundcolor">
     </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

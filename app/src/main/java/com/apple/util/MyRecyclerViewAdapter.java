@@ -83,7 +83,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                         }
                     });
                 }else {
-                    Log.i("bmob","获取收藏列表失败："+e.getMessage() + e.getErrorCode());
+                    Log.i("bmob","Failure："+e.getMessage() + e.getErrorCode());
                 }
             }
         });

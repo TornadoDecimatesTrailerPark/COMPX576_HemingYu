@@ -1,16 +1,12 @@
 package com.data;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.apple.initbmob.InitBmob;
-import com.apple.xhs.five_fragment.home_activity.HomeOpenCamera;
 import com.bean.Comment;
 import com.bean.Hot;
 import com.bean.MyUser;
@@ -35,7 +31,6 @@ import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.CloudCodeListener;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadBatchListener;
@@ -44,7 +39,7 @@ import cn.bmob.v3.listener.UploadBatchListener;
 
 public class AddDataBmob {
     private static MyUser user = BmobUser.getCurrentUser(MyUser.class);
-    //添加一个笔记
+    //Add a note
     public static void addDataToNote(final String title, final String content, final List<String> image, final List<String> styles){
         new Thread(new Runnable() {
             @Override

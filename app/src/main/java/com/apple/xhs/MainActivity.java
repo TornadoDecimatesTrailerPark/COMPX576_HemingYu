@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         if(System.currentTimeMillis() - exitTime > 2000){
-            Toast.makeText(this,"再按一次返回键退出",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Click twice to quit",Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
         }else {
             ActivityCollecter.finishAll();

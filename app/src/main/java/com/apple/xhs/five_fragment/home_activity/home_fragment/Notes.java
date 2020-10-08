@@ -32,7 +32,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
 
-public class HomeFragment_1 extends Fragment implements MyRecyclerViewAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
+public class Notes extends Fragment implements MyRecyclerViewAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
     View view;
     RecyclerView recyclerView;
     MyRecyclerViewAdapter adapter;
@@ -139,30 +139,10 @@ public class HomeFragment_1 extends Fragment implements MyRecyclerViewAdapter.On
                     initPagerView();
                 }else{
                     Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
-                    Log.i("bmob",e + "查询笔记失败");
+                    Log.i("bmob",e + "Search failure");
                 }
             }
         });
     }
 
-    public void getNoteNew(){
-        BmobQuery<Note> query = new BmobQuery<Note>();
-        query.order("-up");
-        query.include("author");
-        query.setLimit(20);
-        query.setSkip(dataSize);
-        query.findObjects(new FindListener<Note>() {
-            @Override
-            public void done(List<Note> notelist, BmobException e) {
-                if(e==null){
-                    dataSize += notelist.size();
-                    data = notelist;
-                    initPagerView();
-                }else{
-                    Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
-                    Log.i("bmob",e + "查询笔记失败");
-                }
-            }
-        });
-    }
 }

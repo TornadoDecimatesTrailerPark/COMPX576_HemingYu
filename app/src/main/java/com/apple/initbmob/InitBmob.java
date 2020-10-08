@@ -2,8 +2,6 @@ package com.apple.initbmob;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.baidu.mapapi.SDKInitializer;
 import com.bean.Note;
 
 import java.util.List;
@@ -11,17 +9,15 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 
 
-/**
- * Created by limeng on 2017/7/21.
- */
+
 
 public class InitBmob extends Application {
     private static Context context;
     private static List<Note> list;
-    private static int guanzhu = 0;
-    private static int fans = 0;
-    private static int fabu = 0;
-    private static int shoucang = 0;
+    private static int guanzhu = 0; //followed
+    private static int fans = 0;//follower
+    private static int fabu = 0;//post
+    private static int shoucang = 0;// like
 
     @Override
     public void onCreate() {

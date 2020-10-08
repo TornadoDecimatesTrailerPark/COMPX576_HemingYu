@@ -52,7 +52,7 @@ public class HomeOpenCamera extends BaseActivity implements View.OnClickListener
             case R.id.home_video:
                 MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
                 if (myUser.getHead()==null || myUser.getNickname()==null){
-                    Toast.makeText(this,"请先设置昵称或头像",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"Please set nickname or avatar at first",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(HomeOpenCamera.this, MineUserInfoSetting.class));
                 }else {
                     startActivity(new Intent(this, NoteEditView.class));
