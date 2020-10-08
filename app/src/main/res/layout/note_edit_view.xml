@@ -97,15 +97,15 @@
                 android:paddingRight="5dp">
                 <CheckBox
                     android:id="@+id/note_nanren"
-                    android:text="aa"
+                    android:text="Sneaker"
                     style="@style/NoteCheckBiaoqian"/>
                 <CheckBox
                     android:id="@+id/note_hufu"
-                    android:text="bb"
+                    android:text="Fashion"
                     style="@style/NoteCheckBiaoqian"/>
                 <CheckBox
                     android:id="@+id/note_jujia"
-                    android:text="cc"
+                    android:text="Trip"
                     style="@style/NoteCheckBiaoqian"/>
             </LinearLayout>
             <LinearLayout
@@ -117,15 +117,15 @@
                 android:layout_marginTop="10dp">
                 <CheckBox
                     android:id="@+id/note_shishang"
-                    android:text="dd"
+                    android:text="Food"
                     style="@style/NoteCheckBiaoqian"/>
                 <CheckBox
                     android:id="@+id/note_meishi"
-                    android:text="ee"
+                    android:text="Game"
                     style="@style/NoteCheckBiaoqian"/>
                 <CheckBox
                     android:id="@+id/note_yundong"
-                    android:text="ff"
+                    android:text="Movie"
                     style="@style/NoteCheckBiaoqian"/>
             </LinearLayout>
             <LinearLayout
@@ -137,14 +137,14 @@
                 android:layout_marginTop="10dp">
                 <CheckBox
                     android:id="@+id/note_lvxing"
-                    android:text="gg"
+                    android:text="Music"
                     style="@style/NoteCheckBiaoqian"/>
                 <CheckBox
-                    android:text="hh"
+                    android:text="PC"
                     android:id="@+id/note_caizhuang"
                     style="@style/NoteCheckBiaoqian"/>
                 <CheckBox
-                    android:text="jj"
+                    android:text="Phone"
                     android:id="@+id/note_muying"
                     style="@style/NoteCheckBiaoqian"/>
             </LinearLayout>

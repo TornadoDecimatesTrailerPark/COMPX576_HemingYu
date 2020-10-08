@@ -1,5 +1,6 @@
 package com.data;
 
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,11 +37,12 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadBatchListener;
 
+import static cn.bmob.v3.Bmob.getApplicationContext;
 
 
 public class AddDataBmob {
     private static MyUser user = BmobUser.getCurrentUser(MyUser.class);
-    //Add a note
+    //添加一个笔记
     public static void addDataToNote(final String title, final String content, final List<String> image, final List<String> styles){
         new Thread(new Runnable() {
             @Override
@@ -51,14 +54,15 @@ public class AddDataBmob {
                 note.setUp(0);
                 String[] imglist = new String[image.size()];
                 final List<BmobFile> imageList = new ArrayList<>();
-                for (int i = 0;i < image.size();i++) {
-                    String img = image.get(i);
-                    String tempPath = Environment.getExternalStorageDirectory().getPath()
+
+                    String img = image.get(0);
+                    ContextWrapper cw=new ContextWrapper(getApplicationContext());
+                    String tempPath = cw.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath()
                             + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
                     compressBitmap(img,tempPath);
-                    Log.i("bmob","图片压缩成功，数目：" + (i+1) + "，地址：" + tempPath);
-                    imglist[i] = tempPath;
-                }
+                    Log.i("bmob","图片压缩成功，数目：" + (1) + "，地址：" + tempPath);
+                    imglist[0] = tempPath;
+
                 BmobFile.uploadBatch(imglist, new UploadBatchListener() {
                     @Override
                     public void onSuccess(List<BmobFile> list, List<String> urls) {
@@ -98,24 +102,25 @@ public class AddDataBmob {
 
                     @Override
                     public void onError(int i, String s) {
-                        Log.i("bmob","图片上传失败：<" + i + ">" + s);
+                        Log.i("bmob","Image upload failure：<" + i + ">" + s);
                     }
                 });
             }
         }).start();
     }
-    //图片压缩
+
     public static void compressBitmap(String imgPath, String outPath) {
         BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inSampleSize = 2;
+
         Bitmap bitmap = BitmapFactory.decodeFile(imgPath, options);
         try {
-            File dir = new File( Environment.getExternalStorageDirectory().getPath()
-                    + "/XHS/temp/");
+            ContextWrapper cw=new ContextWrapper(getApplicationContext());
+            File directory=cw.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+            File dir = new File( directory,"/XHS/temp/");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-            FileOutputStream os = new FileOutputStream(outPath);
+            OutputStream os = new FileOutputStream(outPath);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 70, os);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

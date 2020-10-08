@@ -36,9 +36,6 @@ import java.util.List;
 import butterknife.BindView;
 import me.xiaopan.sketch.SketchImageView;
 
-/**
- * Created by limeng on 2017/7/27.
- */
 
 public class NoteEditView extends BaseActivity implements View.OnClickListener, TextWatcher {
     @BindView(R.id.send_note_title)
@@ -76,12 +73,8 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     String context;
     List<String> getCheckData = new ArrayList<>();
     List<CheckBox> checkItem = new ArrayList<>();
-    String[] strings = {"aa","bb","cc","dd","ee","ff","gg","hh","jj"};
+    String[] strings = {"Sneaker","Fashion","Trip","Food","Game","Movie","Music","PC","Phone"};
     LinearLayout linearLayout;
-    String addrStr,province;
-    LocationClient locationClient;
-    BDLocationListener locationListener;
-    boolean isShowArea = false;
     private List<String> pathList = new ArrayList<>();
     ImgSelConfig config;
     private static final int REQUEST_CODE = 0;

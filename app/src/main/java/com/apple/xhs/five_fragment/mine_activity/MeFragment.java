@@ -28,7 +28,6 @@ import me.xiaopan.sketch.SketchImageView;
 import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;
 
-import static com.data.AddDataBmob.compressBitmap;
 
 
 
@@ -117,10 +116,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 Cursor cursor=getActivity().managedQuery(originalUri, imgs1, null, null, null);
                 int index=cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                 cursor.moveToFirst();
-                String img_url=cursor.getString(index);
                 String tempPath = Environment.getExternalStorageDirectory().getPath()
                         + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
-                compressBitmap(img_url,tempPath);
+
                 Log.i("bmob","img address：" + tempPath);
 
                 head_icon.displayImage(tempPath);

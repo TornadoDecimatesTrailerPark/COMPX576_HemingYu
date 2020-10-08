@@ -35,7 +35,6 @@ import me.xiaopan.sketch.SketchImageView;
 import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;
 
-import static com.data.AddDataBmob.compressBitmap;
 
 
 
@@ -65,8 +64,6 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
 
     String currentSignatures;
     boolean sexDialog = false;
-    List<Map<Integer,String>> skinData = new ArrayList<>();
-    Map<Integer,String> map = new HashMap<>();
 
     @Override
     public int getContentViewId() {
@@ -127,10 +124,8 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
                 UpdateDataBmob.UpdataSignature(newsign);
                 break;
             default:
-                String img_url=uriChange(data);
                 String tempPath = Environment.getExternalStorageDirectory().getPath()
                         + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
-                compressBitmap(img_url,tempPath);
                 Log.i("bmob","头像图片压缩成功，地址：" + tempPath);
                 head_icon.displayImage(tempPath);
 
