@@ -14,20 +14,14 @@ public class SelfNoteCard extends LinearLayout {
     TextView selfNoteTitle;
     TextView selfNoteShoucang;
     TextView selfNoteDate;
-    SketchImageView sketchImageOne;
-    SketchImageView sketchImageTwo;
-    SketchImageView sketchImageThree;
-    SketchImageView sketchImageFour;
+
     public SelfNoteCard(Context context) {
         super(context);
         LayoutInflater.from(context).inflate(R.layout.note_card_custom,this);
         selfNoteTitle = findViewById(R.id.yourselfnotetitle);
         selfNoteShoucang = findViewById(R.id.yourselfnoteshoucang);
         selfNoteDate = findViewById(R.id.yourselfnotedate);
-        sketchImageOne = findViewById(R.id.yourselfnoteimg1);
-        sketchImageTwo = findViewById(R.id.yourselfnoteimg2);
-        sketchImageThree = findViewById(R.id.yourselfnoteimg3);
-        sketchImageFour = findViewById(R.id.yourselfnoteimg4);
+
     }
 
     public void setSelfNoteTitle(String title) {
@@ -42,19 +36,4 @@ public class SelfNoteCard extends LinearLayout {
         selfNoteDate.setText(date);
     }
 
-    public void setSketchImageOne(String url) {
-        sketchImageOne.displayImage(url);
-    }
-
-    public void setSketchImageTwo(String url) {
-        sketchImageTwo.displayImage(url);
-    }
-
-    public void setSketchImageThree(String url) {
-        sketchImageThree.displayImage(url);
-    }
-
-    public void setSketchImageFour(String url) {
-        sketchImageFour.displayImage(url);
-    }
 }

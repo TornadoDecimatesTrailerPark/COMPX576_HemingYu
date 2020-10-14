@@ -7,12 +7,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.ButtonBarLayout;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -41,7 +43,9 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import cn.bmob.v3.BmobQuery;
@@ -53,65 +57,63 @@ import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;
 
 
-
 public class NoteScan extends BaseActivity implements View.OnClickListener, View.OnLayoutChangeListener {
     //伸缩toolbar
     @BindView(R.id.note_appbar)
-            AppBarLayout appBarLayout;
+    AppBarLayout appBarLayout;
     @BindView(R.id.note_collapsing)
-            CollapsingToolbarLayout collapsing;
+    CollapsingToolbarLayout collapsing;
     @BindView(R.id.note_toolbar)
-            Toolbar toolbar;
+    Toolbar toolbar;
     @BindView(R.id.playButton)
-            ButtonBarLayout playButton;
+    ButtonBarLayout playButton;
     //user info
     @BindView(R.id.pic_viewpager)
     ViewPager pic_viewpager;
 
     @BindView(R.id.username_toolbar)
-            TextView usernametoolbar;
-    @BindView(R.id.userheadimage_context)
-            SketchImageView userheadimagecontext;
+    TextView usernametoolbar;
+    /*@BindView(R.id.userheadimage_context)
+    SketchImageView userheadimagecontext;*/
     @BindView(R.id.username_context)
-            TextView usernamecontext;
+    TextView usernamecontext;
     @BindView(R.id.user_notetitle)
-            TextView usernotetitle;
+    TextView usernotetitle;
     @BindView(R.id.user_notecontext)
-            TextView usernotecontext;
+    TextView usernotecontext;
     @BindView(R.id.submitdate)
-            TextView submitdate;
+    TextView submitdate;
     @BindView(R.id.note_beishoucang)
-            TextView note_beishoucang;
+    TextView note_beishoucang;
     @BindView(R.id.note_click_pinglun)
-            TextView noteclickpingl;
+    TextView noteclickpingl;
     @BindView(R.id.note_popedittext)
-            LinearLayout popedittext;
+    LinearLayout popedittext;
     @BindView(R.id.edittext)
-            EditText editText;
+    EditText editText;
     @BindView(R.id.note_pinglunparent)
-            LinearLayout note_pinglunparent;
+    LinearLayout note_pinglunparent;
     @BindView(R.id.note_fabupinglun)
-            Button note_fabupinglun;
-    @BindView(R.id.current_userhead_img)
-            SketchImageView current_userhead_img;
+    Button note_fabupinglun;
+   /* @BindView(R.id.current_userhead_img)
+    SketchImageView current_userhead_img;*/
     @BindView(R.id.pinglunSum)
-            TextView pinglunSum;
+    TextView pinglunSum;
     @BindView(R.id.show_morePinglun)
-            TextView show_morePinglun;
+    TextView show_morePinglun;
     @BindView(R.id.note_guanzhu)
-            Button guanzhu;
+    Button guanzhu;
     Note note;
     //当前笔记作者
     MyUser myUser;
     //当前app用户
     MyUser currentUser;
-    View popView;
-    PopupWindow popupWindow;
     List<SketchImageView> list = new ArrayList<>();
     int keyHeight;
     DisplayOptions displayOptions;
     List<Comment> allpinglun = new ArrayList<>();
     boolean isGuanzhu = false;
+
     @Override
     public int getContentViewId() {
         return R.layout.note_scan;
@@ -135,7 +137,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         pinglunSum.setOnClickListener(this);
         show_morePinglun.setOnClickListener(this);
         usernametoolbar.setOnClickListener(this);
-        userheadimagecontext.setOnClickListener(this);
+     /*   userheadimagecontext.setOnClickListener(this);*/
         usernamecontext.setOnClickListener(this);
         guanzhu.setOnClickListener(this);
     }
@@ -143,54 +145,55 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
     private void setUserHeadImage() {
         displayOptions = new DisplayOptions();
         displayOptions.setImageProcessor(CircleImageProcessor.getInstance());
-        userheadimagecontext.setOptions(displayOptions);
-        current_userhead_img.setOptions(displayOptions);
-        keyHeight = getWindowManager().getDefaultDisplay().getHeight()/3;
+      /*  userheadimagecontext.setOptions(displayOptions);
+        current_userhead_img.setOptions(displayOptions);*/
+        keyHeight = getWindowManager().getDefaultDisplay().getHeight() / 3;
     }
 
     private void setNoteData() {
         //获取intent传来的数据，设置页面
         note = (Note) getIntent().getSerializableExtra("userdata");
         myUser = note.getAuthor();
-        if(myUser.getObjectId().equals(BmobUser.getCurrentUser(MyUser.class).getObjectId())){
+        if (myUser.getObjectId().equals(BmobUser.getCurrentUser(MyUser.class).getObjectId())) {
             guanzhu.setVisibility(View.INVISIBLE);
         }
-        for(int i = 0; i < note.getImage().size();i++){
-            SketchImageView imageView = new SketchImageView(this);
-            imageView.displayImage(note.getImage().get(i).getUrl());
-            imageView.getOptions().setDecodeGifImage(true);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            final int j = i;
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(NoteScan.this,NoteEditShowBigPic.class);
-                    intent.putExtra("showbigpic",note.getImage().get(j).getUrl());
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.showbigpic_in,R.anim.showbigpic_out);
-                }
-            });
-            list.add(imageView);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("iPhone 12 is available now", R.drawable.note0);
+        map.put("The best Air Jordan One", R.drawable.note1);
+        map.put("Why people love minecraft", R.drawable.note2);
+        map.put("S10 Champion is on", R.drawable.note3);
+        map.put("Java is the best language", R.drawable.note4);
+        map.put("Compx576 is a good course",R.drawable.note5);
+
+        String title = note.getTitle();
+        SketchImageView imageView = new SketchImageView(this);
+        if (map.get(title)==null){
+            imageView.displayResourceImage(R.drawable.note5);
         }
+        imageView.displayResourceImage(map.get(title));
+        imageView.getOptions().setDecodeGifImage(true);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        list.add(imageView);
+
         MySketchViewPagerAdapter adapter = new MySketchViewPagerAdapter(list);
         pic_viewpager.setAdapter(adapter);
         //sketchimageview.displayImage(note.getImage().get(0).getUrl());
         //评论区头像设为当前用户
-        current_userhead_img.displayImage(currentUser.getHead().getUrl());
+       /* current_userhead_img.displayImage(currentUser.getHead().getUrl());*/
         usernametoolbar.setText(myUser.getNickname());
-        userheadimagecontext.displayImage(myUser.getHead().getUrl());
+     /*   userheadimagecontext.displayImage(myUser.getHead().getUrl());*/
         usernamecontext.setText(myUser.getNickname());
         usernotetitle.setText(note.getTitle());
         usernotecontext.setText(note.getContent());
         submitdate.setText(note.getCreatedAt());
-        note_beishoucang.setText(note.getUp()+"Likes");
+        note_beishoucang.setText(note.getUp() + " Likes");
         addThisNotePinglunList(note);
     }
 
     private void addThisNotePinglunList(Note note) {
         BmobQuery<Comment> query = new BmobQuery<Comment>();
-        query.addWhereEqualTo("note",note);
+        query.addWhereEqualTo("note", note);
         query.order("-createdAt");
         query.include("user");
         //query.setLimit(3);
@@ -198,14 +201,14 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         query.findObjects(new FindListener<Comment>() {
             @Override
             public void done(List<Comment> list, BmobException e) {
-                if(list==null){
+                if (list == null) {
                     return;
                 }
                 allpinglun = list;
-                pinglunSum.setText(list.size()+"Comments");
-                show_morePinglun.setText("See all"+list.size()+"comments");
-                if (e==null){
-                    for(int i = 0;i < list.size() && i < 3 ;i++){
+                pinglunSum.setText(list.size() + " Comments");
+                show_morePinglun.setText("See all " + list.size() + " comments");
+                if (e == null) {
+                    for (int i = 0; i < list.size() && i < 3; i++) {
                         Comment comment = list.get(i);
                         final String url = comment.getUser().getHead().getUrl();
                         final String nickname = comment.getUser().getNickname();
@@ -214,7 +217,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                CommentModule module = new CommentModule(getApplicationContext(),null);
+                                CommentModule module = new CommentModule(getApplicationContext(), null);
                                 module.getHeadPic().setOptions(displayOptions);
                                 module.getHeadPic().displayImage(url);
                                 module.getUserContent().setText(content);
@@ -225,8 +228,8 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                         });
                     }
 
-                }else {
-                    Log.i("bmob","failure" + e.getErrorCode() + e.getMessage());
+                } else {
+                    Log.i("bmob", "failure" + e.getErrorCode() + e.getMessage());
                 }
             }
         });
@@ -237,16 +240,17 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         appBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
-                if(state == State.EXPANDED){
+                if (state == State.EXPANDED) {
                     playButton.setVisibility(View.GONE);
-                }else if(state == State.COLLAPSED){
+                } else if (state == State.COLLAPSED) {
                     playButton.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     playButton.setVisibility(View.GONE);
                 }
             }
         });
     }
+
     //设置toolbar
     private void setCollapsingToolbar() {
         setSupportActionBar(toolbar);
@@ -265,7 +269,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.note_click_pinglun:
                 //弹出软键盘
@@ -273,33 +277,33 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                 editText.setFocusable(true);
                 editText.setFocusableInTouchMode(true);
                 editText.requestFocus();
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 break;
-                //点击发布评论按钮
+            //点击发布评论按钮
             case R.id.note_fabupinglun:
                 String pingluncontent = editText.getText().toString();
-                if(pingluncontent.equals("")){
-                    Toast.makeText(this,"Empty",Toast.LENGTH_SHORT).show();
+                if (pingluncontent.equals("")) {
+                    Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 addPingLunContentToView(pingluncontent);
                 break;
             case R.id.pinglunSum:
             case R.id.show_morePinglun:
-                if(allpinglun.size()==0){
-                    Toast.makeText(this,"No comment",Toast.LENGTH_SHORT).show();
+                if (allpinglun.size() == 0) {
+                    Toast.makeText(this, "No comment", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent(NoteScan.this,NoteAllPinglun.class);
+                Intent intent = new Intent(NoteScan.this, NoteAllPinglun.class);
                 intent.putExtra("allpinglun", (Serializable) allpinglun);
                 startActivity(intent);
                 break;
-            case R.id.userheadimage_context:
+         /*   case R.id.userheadimage_context:*/
             case R.id.username_context:
             case R.id.username_toolbar:
-                Intent notelist = new Intent(NoteScan.this,SelfNoteScan.class);
-                notelist.putExtra("userselfnote",myUser);
+                Intent notelist = new Intent(NoteScan.this, SelfNoteScan.class);
+                notelist.putExtra("userselfnote", myUser);
                 startActivity(notelist);
                 break;
             case R.id.note_guanzhu:
@@ -307,9 +311,10 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                 break;
         }
     }
+
     // 添加用户提交的评论到界面
     private void addPingLunContentToView(String s) {
-        CommentModule layout = new CommentModule(this,null);
+        CommentModule layout = new CommentModule(this, null);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String dateTime = format.format(new Date());
         layout.getHeadPic().setOptions(displayOptions);
@@ -317,45 +322,48 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         layout.getUserName().setText(currentUser.getNickname());
         layout.getUserContent().setText(s);
         layout.getPushDate().setText(dateTime);
-        note_pinglunparent.addView(layout,0);
-        AddDataBmob.addComment(note,s);
+        note_pinglunparent.addView(layout, 0);
+        AddDataBmob.addComment(note, s);
         editText.setText("");
         popedittext.setVisibility(View.INVISIBLE);
-        InputMethodManager imm2 = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm2 = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm2.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     //监听软键盘是否谈起
     @Override
     public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
-        if(i7 != 0 && i3 != 0 &&(i7 - i3 > keyHeight)){
+        if (i7 != 0 && i3 != 0 && (i7 - i3 > keyHeight)) {
             popedittext.setVisibility(View.VISIBLE);
-        }else if(i7 != 0 && i3 != 0 &&(i3 - i7 > keyHeight)){
+        } else if (i7 != 0 && i3 != 0 && (i3 - i7 > keyHeight)) {
             popedittext.setVisibility(View.GONE);
         }
     }
+
     // 弹出框消失后恢复activitiy颜色
-    public class MyPopUpWindow implements PopupWindow.OnDismissListener{
+    public class MyPopUpWindow implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {
             backgroundAlpha(1.0f);
         }
     }
+
     //设置背景色
     public void backgroundAlpha(float bgAlpha) {
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.alpha = bgAlpha;
         getWindow().setAttributes(lp);
     }
+
     //关注该用户
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void guanZhu(){
-        if(isGuanzhu==false){
+    public void guanZhu() {
+        if (isGuanzhu == false) {
             guanzhu.setText("Followed");
             guanzhu.setTextColor(getResources().getColor(R.color.gray));
             guanzhu.setBackground(getResources().getDrawable(R.drawable.cancelguanzhu_buttonshape));
             isGuanzhu = true;
-        }else {
+        } else {
             guanzhu.setText("+ Follow");
             guanzhu.setTextColor(getResources().getColor(R.color.xhsColor));
             guanzhu.setBackground(getResources().getDrawable(R.drawable.addguanzhu_buttonshape));
@@ -365,7 +373,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.note_toolbar_menu,menu);
+        getMenuInflater().inflate(R.menu.note_toolbar_menu, menu);
         return true;
     }
 }

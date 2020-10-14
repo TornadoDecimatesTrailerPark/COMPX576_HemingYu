@@ -46,7 +46,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView(View view) {
-        head_icon = view.findViewById(R.id.img_me_user_head);
+       /* head_icon = view.findViewById(R.id.img_me_user_head);*/
         nickname = view.findViewById(R.id.me_nickname);
     }
 
@@ -66,10 +66,10 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
         DisplayOptions displayOptions = new DisplayOptions();
         displayOptions.setImageProcessor(CircleImageProcessor.getInstance());
-        head_icon.setOptions(displayOptions);
-        if(myUser.getHead()!=null){
+      /*  head_icon.setOptions(displayOptions);*/
+        /*if(myUser.getHead()!=null){
             head_icon.displayImage(myUser.getHead().getUrl());
-        }
+        }*/
         if(myUser.getNickname() != null){
             nickname.setText(myUser.getNickname());
         }
@@ -87,7 +87,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             case R.id.me_head:
                 Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
-                galleryIntent.setType("image/*");//图片
+                galleryIntent.setType("image/*");//img
                 startActivityForResult(galleryIntent, 1);
                 break;
             case R.id.myselfnote:
@@ -112,7 +112,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 break;
             case 1:
                 Uri originalUri=data.getData();
-                String []imgs1={MediaStore.Images.Media.DATA};//将图片URI转换成存储路径
+                String []imgs1={MediaStore.Images.Media.DATA};//change img url to store path
                 Cursor cursor=getActivity().managedQuery(originalUri, imgs1, null, null, null);
                 int index=cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                 cursor.moveToFirst();
@@ -150,15 +150,15 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 .show();
     }
 
-    //退出账户的方法
+    //quit account
     private void popExitAialog() {
         new AlertDialog.Builder(getActivity()).setTitle("Log out")
                 .setMessage("Log out？")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //确定退出
-                        BmobUser.logOut();   //清除缓存用户对象
+                        //confirm quit
+                        BmobUser.logOut();   //clear cache
                         startActivity(new Intent(getActivity(), Login.class));
                         Toast.makeText(getContext(),"Quit",Toast.LENGTH_SHORT).show();
                     }

@@ -65,14 +65,14 @@ public class ChangePassword extends BaseActivity implements View.OnClickListener
         String newP = changenewpwd.getText().toString();
         String newPA = changepwdagain.getText().toString();
         if(!newP.equals(newPA)){
-            Toast.makeText(this,"两次输入新密码不一致",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please input same password",Toast.LENGTH_SHORT).show();
             return;
         }
         BmobUser.updateCurrentUserPassword(oldP, newP, new UpdateListener() {
             @Override
             public void done(BmobException e) {
                 if(e == null){
-                    Toast.makeText(getApplicationContext(),"修改密码成功",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getApplicationContext(), ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
                 }

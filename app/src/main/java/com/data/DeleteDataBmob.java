@@ -8,17 +8,9 @@ import com.bean.MyUser;
 import com.bean.Note;
 import com.collecter.ErrorCollecter;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
-import cn.bmob.v3.AsyncCustomEndpoints;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.CloudCodeListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 

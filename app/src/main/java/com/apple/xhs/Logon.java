@@ -52,23 +52,23 @@ public class Logon extends BaseActivity {
         passAga = userPassAga.getText().toString().trim();
         email = userEmail.getText().toString().trim();
         if (!passAga.equals(pass)){
-            userPassAga.setError("密码不一致");
+            userPassAga.setError("Inconsistent passwords");
             return;
         }else if (!name.matches("[a-zA-Z0-9_]{1,12}")){
-            userName.setError("用户名只能由字母数字下划线组成，长度不能超过12位");
+            userName.setError("The user name can only be composed of A-Z, a-z，0-9, not more than 12 characters.");
             return;
         }else if (!pass.matches("[a-zA-Z0-9]{1,16}")){
-            userPass.setError("密码含有非法字符，或长度超过16位");
+            userPass.setError("The password contains illegal characters or is more than 16 characters in length");
             return;
         }else if (!email.matches("[a-zA-Z_0-9]+@(([a-zA-z0-9]-*)+\\.){1,3}[a-zA-z\\-]+")){
-            userEmail.setError("邮箱格式错误");
+            userEmail.setError("Incorrect mailbox format");
             return;
         }
         MyUser user = new MyUser();
         BmobFile bmobFile = new BmobFile("ft021l_sm.png","","http://bmob-cdn-13046.b0.upaiyun.com/2017/08/09/6d5a446c40af5dc88025972632129a03.png");
         user.setUsername(name);
         user.setPassword(pass);
-        user.setNickname("用户" + System.currentTimeMillis());
+        user.setNickname("User" + System.currentTimeMillis());
         user.setHead(bmobFile);
         if (email != null){
             user.setEmail(email);

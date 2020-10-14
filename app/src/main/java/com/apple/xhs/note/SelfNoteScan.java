@@ -83,22 +83,16 @@ public class SelfNoteScan extends BaseActivity implements View.OnClickListener {
                     final Note note = list.get(i);
                     SelfNoteCard card = new SelfNoteCard(getApplicationContext());
                     card.setSelfNoteTitle(note.getTitle());
-                    card.setSelfNoteShoucang("liked: "+note.getUp()+"times");
+                    card.setSelfNoteShoucang("liked: "+note.getUp()+" times"+"\n"+"\n"+"Press to delete this note");
                     card.setSelfNoteDate(note.getUpdatedAt());
                     if(note.getImage().size()==1){
-                        card.setSketchImageOne(note.getImage().get(0).getUrl());
+
                     }else if(note.getImage().size()==2){
-                        card.setSketchImageOne(note.getImage().get(0).getUrl());
-                        card.setSketchImageTwo(note.getImage().get(1).getUrl());
+
                     }else if(note.getImage().size()==3){
-                        card.setSketchImageOne(note.getImage().get(0).getUrl());
-                        card.setSketchImageTwo(note.getImage().get(1).getUrl());
-                        card.setSketchImageThree(note.getImage().get(2).getUrl());
+
                     }else if(note.getImage().size()>=4){
-                        card.setSketchImageOne(note.getImage().get(0).getUrl());
-                        card.setSketchImageTwo(note.getImage().get(1).getUrl());
-                        card.setSketchImageThree(note.getImage().get(2).getUrl());
-                        card.setSketchImageFour(note.getImage().get(3).getUrl());
+
                     }
                     card.setTag(i);
                     parent.addView(card);

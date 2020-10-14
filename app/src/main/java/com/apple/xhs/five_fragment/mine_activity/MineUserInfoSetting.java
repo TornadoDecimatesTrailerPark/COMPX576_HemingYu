@@ -51,10 +51,10 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
     UserInfoRow sex;
     @BindView(R.id.signatures_edit)
     UserInfoRow signatures;
-    @BindView(R.id.override_head)
+   /* @BindView(R.id.override_head)
     View head;
     @BindView(R.id.img_user_head)
-    SketchImageView head_icon;
+    SketchImageView head_icon;*/
     @BindView(R.id.area_choice)
     UserInfoRow area;
 
@@ -81,7 +81,7 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
     public void setHeadIconCircle(){
         DisplayOptions displayOptions = new DisplayOptions();
         displayOptions.setImageProcessor(CircleImageProcessor.getInstance());
-        head_icon.setOptions(displayOptions);
+        /*head_icon.setOptions(displayOptions);*/
     }
 
     @Override
@@ -127,7 +127,7 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
                 String tempPath = Environment.getExternalStorageDirectory().getPath()
                         + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
                 Log.i("bmob","头像图片压缩成功，地址：" + tempPath);
-                head_icon.displayImage(tempPath);
+                /*head_icon.displayImage(tempPath);*/
 
                 BmobFile icon = new BmobFile(new File(tempPath));
                 UpdateDataBmob.UpdataHead(icon);
@@ -156,7 +156,7 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
         name.setOnClickListener(this);
         id.setOnClickListener(this);
         sex.setOnClickListener(this);
-        head.setOnClickListener(this);
+       /* head.setOnClickListener(this);*/
         area.setOnClickListener(this);
         signatures.setOnClickListener(this);
     }
@@ -167,12 +167,12 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
             case R.id.my_setting_back:
                 finish();
                 break;
-            case R.id.override_head:
+           /* case R.id.override_head:
                 Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 galleryIntent.setType("image/*");//图片
                 startActivityForResult(galleryIntent, 100);
-                break;
+                break;*/
             case R.id.override_name:
                 currentName = name.getName().getText().toString();
                 Intent intentName = new Intent(this,MineSettingName.class);
@@ -254,7 +254,7 @@ public class MineUserInfoSetting extends BaseActivity implements View.OnClickLis
         MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
         if(myUser.getHead()!=null){
             //加载头像
-            head_icon.displayImage(myUser.getHead().getUrl());
+          /*  head_icon.displayImage(myUser.getHead().getUrl());*/
         }
 
         //昵称

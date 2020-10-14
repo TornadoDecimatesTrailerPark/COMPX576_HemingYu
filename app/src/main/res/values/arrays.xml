@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="your_array_name">
+        <item>@drawable/note0</item>
+        <item>@drawable/note1</item>
+        <item>@drawable/note2</item>
+        <item>@drawable/note3</item>
+        <item>@drawable/note4</item>
+    </integer-array>
+</resources>

@@ -59,10 +59,10 @@ public class MineSettingID extends BaseActivity implements View.OnClickListener 
             case R.id.my_setting_done:
                 String string = idReset.getText().toString();
                 if (!myUser.getCopyId().equals(string) && myUser.getChange()){
-                    Toast.makeText(this,"ID只能修改一次",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"ID can only be changed once",Toast.LENGTH_SHORT).show();
                     return;
                 }else if(string.equals("")){
-                    Toast.makeText(this,"名字不能为空",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"Nickname can not be empty",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent intent1 = new Intent(MineSettingID.this,MineUserInfoSetting.class);

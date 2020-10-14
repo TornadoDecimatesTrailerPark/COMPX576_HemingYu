@@ -38,7 +38,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     private OnItemClickListener mOnItemClickListener = null;
 
-    //定义一个interface
+    //define an interface
     public static interface OnItemClickListener {
         void onItemClick(View view , int position);
     }
@@ -49,12 +49,35 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         view.setOnClickListener(this);
         return new MyViewHolder(view);
     }
-
+//这个position决定他是哪个位置
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Note note = data.get(position);
         MyUser myUser = data.get(position).getAuthor();
-        holder.imgPic.displayImage(note.getImage().get(0).getUrl());
+        int picTest=R.drawable.note0;
+        //holder.imgPic.displayImage(note.getImage().get(0).getUrl());
+        //imgPic is the pic in home page
+        switch (note.getTitle()) {
+            case "The best Air Jordan One":
+                picTest = R.drawable.note1;
+                break;
+            case "Why people love minecraft":
+                picTest = R.drawable.note2;
+                break;
+            case "S10 Champion is on":
+                picTest = R.drawable.note3;
+                break;
+            case "Java is the best language":
+                picTest = R.drawable.note4;
+                break;
+            case "iPhone 12 is available now":
+                picTest = R.drawable.note0;
+                break;
+            default:
+                picTest = R.drawable.note5;
+                break;
+        }
+        holder.imgPic.displayResourceImage(picTest);
         holder.textTitle.setText(note.getTitle());
         holder.textUserHead.displayImage(myUser.getHead().getUrl());
         holder.textUserName.setText(myUser.getNickname());
@@ -97,7 +120,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onClick(View view) {
         if (mOnItemClickListener != null) {
-            //注意这里使用getTag方法获取position
+            //use getTag to get position
             mOnItemClickListener.onItemClick(view,(int)view.getTag());
         }
     }
@@ -115,7 +138,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public MyViewHolder(View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.grid_item_checkbox);
-            // 获取img设置
+            // get settings of img
             imgPic = itemView.findViewById(R.id.grid_item_pic);
             imgPic.setScaleType(SketchImageView.ScaleType.CENTER_CROP);
             imgPic.setAdjustViewBounds(true);

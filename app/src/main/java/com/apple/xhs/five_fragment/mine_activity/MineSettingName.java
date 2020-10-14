@@ -51,7 +51,7 @@ public class MineSettingName extends BaseActivity implements View.OnClickListene
             case R.id.my_setting_done:
                 String string = myNewName.getText().toString();
                 if(string.equals("")){
-                    Toast.makeText(this,"名字不能为空",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"Nickname can not be empty",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 UpdateDataBmob.UpdataNickname(string);

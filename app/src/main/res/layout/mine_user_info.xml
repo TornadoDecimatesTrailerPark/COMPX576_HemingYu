@@ -28,7 +28,7 @@
                 android:textColor="@color/textGrayColor"
                 android:textSize="15sp" />
             <include layout="@layout/setting_line_merge" />
-            <LinearLayout
+         <!--   <LinearLayout
                 android:id="@+id/override_head"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -52,7 +52,7 @@
                     android:layout_height="13dp"
                     android:layout_marginLeft="155dp"
                     android:src="@mipmap/arrow_icon_right" />
-            </LinearLayout>
+            </LinearLayout>-->
             <include layout="@layout/setting_line_merge" />
             <com.apple.xhs.custom_view.UserInfoRow
                 android:id="@+id/override_name"

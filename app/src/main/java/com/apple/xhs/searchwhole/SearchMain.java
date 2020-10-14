@@ -265,7 +265,7 @@ public class SearchMain extends BaseActivity implements View.OnClickListener, Te
                             //代码块
                             noteList = newList;
                             relatedTitle.clear();
-                            relatedTitle.add("共有"+noteList.size()+"条相关笔记");
+                            relatedTitle.add("There are "+noteList.size()+" related notes.");
                             for(int i = 0 ; i < noteList.size();i++){
                                 relatedTitle.add(noteList.get(i).getTitle());
                             }

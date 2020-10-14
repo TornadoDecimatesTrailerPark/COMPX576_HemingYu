@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
      
     }
 
-    //弹出窗口
+    //pop uo window
     private void initViewPopWindow(View view) {
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         windowManager = getActivity().getWindowManager();
@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         popupWindow.setFocusable(true);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
         popupWindow.setOutsideTouchable(true);
-        //弹出框显示在该控件下方
+
         homeTop = view.findViewById(R.id.home_top);
     }
     @Override

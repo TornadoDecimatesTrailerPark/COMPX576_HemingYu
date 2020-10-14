@@ -24,15 +24,15 @@
                     android:layout_height="75dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp">
-                    <me.xiaopan.sketch.SketchImageView
+            <!--        <me.xiaopan.sketch.SketchImageView
                         android:id="@+id/img_me_user_head"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/xy_walkthroughs_account"/>
-                    <ImageView
+                        android:src="@drawable/xy_walkthroughs_account"/>-->
+         <!--           <ImageView
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:background="@drawable/user_head_icon"/>
+                        android:background="@drawable/user_head_icon"/>-->
                 </FrameLayout>
                 <TextView
                     android:id="@+id/me_nickname"

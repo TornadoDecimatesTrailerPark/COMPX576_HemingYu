@@ -105,7 +105,7 @@ public class Notes extends Fragment implements MyRecyclerViewAdapter.OnItemClick
         },2000);
     }
 
-    //设置item外边距
+
     public class SpacesItemDecoration extends RecyclerView.ItemDecoration{
         int space = 0;
         public SpacesItemDecoration(int space){
