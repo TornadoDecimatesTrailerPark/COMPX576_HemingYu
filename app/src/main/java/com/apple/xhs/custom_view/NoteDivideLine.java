@@ -8,12 +8,12 @@ import android.widget.LinearLayout;
 import com.apple.xhs.R;
 
 
-
 public class NoteDivideLine extends LinearLayout {
     View view;
+
     public NoteDivideLine(Context context) {
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.note_pinglun_line,this);
+        LayoutInflater.from(context).inflate(R.layout.note_pinglun_line, this);
         view = findViewById(R.id.note_pinglunline);
     }
 }

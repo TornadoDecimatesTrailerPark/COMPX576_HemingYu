@@ -12,22 +12,22 @@
         <attr name="grid_paddingBottom" format="dimension" />
     </declare-styleable>
     <declare-styleable name="InfoSettingTitle">
-        <attr name="setText" format="string"/>
-        <attr name="setDoneText" format="string"/>
-        <attr name="setBackground" format="reference"/>
-        <attr name="setDoneTextBackground" format="reference"/>
+        <attr name="setText" format="string" />
+        <attr name="setDoneText" format="string" />
+        <attr name="setBackground" format="reference" />
+        <attr name="setDoneTextBackground" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="UserInfoRow">
-        <attr name="setItemTitle" format="string"/>
-        <attr name="setNameText" format="string"/>
-        <attr name="setHintText" format="string"/>
+        <attr name="setItemTitle" format="string" />
+        <attr name="setNameText" format="string" />
+        <attr name="setHintText" format="string" />
     </declare-styleable>
     <declare-styleable name="InfoSettingRow">
-        <attr name="setRowTitle" format="string"/>
+        <attr name="setRowTitle" format="string" />
     </declare-styleable>
 
     <declare-styleable name="HotSearchLable">
-        <attr name="setHotLable" format="string"/>
+        <attr name="setHotLable" format="string" />
     </declare-styleable>
 </resources>

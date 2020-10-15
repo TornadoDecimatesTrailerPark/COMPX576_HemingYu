@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
+
     <me.xiaopan.sketch.SketchImageView
         android:id="@+id/show_big_pic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter" />
 </LinearLayout>

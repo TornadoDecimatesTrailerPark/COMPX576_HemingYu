@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <com.apple.xhs.custom_view.InfoSettingTitle
         android:id="@+id/reset_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:setText="Change ID"
         app:setDoneText="Confirm"
-        app:setBackground="@drawable/setting_toolbar"/>
+        app:setBackground="@drawable/setting_toolbar" />
 
     <EditText
         android:id="@+id/id_reset"
@@ -20,7 +21,8 @@
         android:paddingLeft="20dp"
         android:text="18813141902"
         android:textSize="16sp"
-        android:background="@null"/>
+        android:background="@null" />
+
     <TextView
         android:id="@+id/id_tips"
         android:layout_width="match_parent"
@@ -30,9 +32,10 @@
         android:gravity="center_vertical"
         android:textColor="@color/textGrayColor"
         android:background="@color/backgroundcolor"
-        android:text="Only can be number"/>
+        android:text="Only can be number" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundcolor"/>
+        android:background="@color/backgroundcolor" />
 </LinearLayout>

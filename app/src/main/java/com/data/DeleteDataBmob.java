@@ -15,8 +15,8 @@ import cn.bmob.v3.listener.UpdateListener;
 
 
 public class DeleteDataBmob {
-    //取消收藏
-    public static void deleteLikes(final Note note){
+    //cancel like
+    public static void deleteLikes(final Note note) {
         final MyUser my = BmobUser.getCurrentUser(MyUser.class);
         BmobRelation relation = new BmobRelation();
         relation.remove(note);
@@ -24,48 +24,48 @@ public class DeleteDataBmob {
         my.update(new UpdateListener() {
             @Override
             public void done(BmobException e) {
-                if(e==null){
+                if (e == null) {
                     UpdateDataBmob.delUp(note);
 
-                    InitBmob.setShoucang(InitBmob.getShoucang()-1);
+                    InitBmob.setShoucang(InitBmob.getShoucang() - 1);
 
-                }else{
-                    Toast.makeText(InitBmob.getContext(),ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
     }
 
-    //删除笔记
-    public static void deleteNote(final Note note){
+    //delete a note
+    public static void deleteNote(final Note note) {
         note.delete(new UpdateListener() {
             @Override
             public void done(BmobException e) {
-                if (e==null){
+                if (e == null) {
 
-                    InitBmob.setFabu(InitBmob.getFabu()-1);
+                    InitBmob.setFabu(InitBmob.getFabu() - 1);
 
-                }else {
-                    Toast.makeText(InitBmob.getContext(),ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
     }
 
-    //清空历史搜索
-    public static void deleteHistory(){
+    //delete history of search
+    public static void deleteHistory() {
         MyUser user = BmobUser.getCurrentUser(MyUser.class);
         user.remove("history");
         user.update(new UpdateListener() {
             @Override
             public void done(BmobException e) {
-                if (e==null){
+                if (e == null) {
 
-                    Log.i("bmob","清空历史成功");
-                }else {
-                    Toast.makeText(InitBmob.getContext(),ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
+                    Log.i("bmob", "Emptied successfully");
+                } else {
+                    Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
 
                 }
             }

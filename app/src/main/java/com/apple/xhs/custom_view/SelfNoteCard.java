@@ -9,7 +9,7 @@ import com.apple.xhs.R;
 
 import me.xiaopan.sketch.SketchImageView;
 
-
+//This class is used to display the page of personal information-my notes
 public class SelfNoteCard extends LinearLayout {
     TextView selfNoteTitle;
     TextView selfNoteShoucang;
@@ -17,7 +17,7 @@ public class SelfNoteCard extends LinearLayout {
 
     public SelfNoteCard(Context context) {
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.note_card_custom,this);
+        LayoutInflater.from(context).inflate(R.layout.note_card_custom, this);
         selfNoteTitle = findViewById(R.id.yourselfnotetitle);
         selfNoteShoucang = findViewById(R.id.yourselfnoteshoucang);
         selfNoteDate = findViewById(R.id.yourselfnotedate);

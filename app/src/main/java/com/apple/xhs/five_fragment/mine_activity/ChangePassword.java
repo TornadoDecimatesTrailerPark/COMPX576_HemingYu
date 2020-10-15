@@ -1,7 +1,9 @@
 package com.apple.xhs.five_fragment.mine_activity;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +18,6 @@ import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
-
 
 
 public class ChangePassword extends BaseActivity implements View.OnClickListener {
@@ -49,7 +50,7 @@ public class ChangePassword extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.my_setting_back:
                 finish();
                 break;
@@ -64,17 +65,17 @@ public class ChangePassword extends BaseActivity implements View.OnClickListener
         String oldP = changeoldpwd.getText().toString();
         String newP = changenewpwd.getText().toString();
         String newPA = changepwdagain.getText().toString();
-        if(!newP.equals(newPA)){
-            Toast.makeText(this,"Please input same password",Toast.LENGTH_SHORT).show();
+        if (!newP.equals(newPA)) {
+            Toast.makeText(this, "Please input same password", Toast.LENGTH_SHORT).show();
             return;
         }
         BmobUser.updateCurrentUserPassword(oldP, newP, new UpdateListener() {
             @Override
             public void done(BmobException e) {
-                if(e == null){
-                    Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getApplicationContext(), ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
+                if (e == null) {
+                    Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
                 }
             }
         });

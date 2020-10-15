@@ -10,21 +10,21 @@ import android.widget.TextView;
 import com.apple.xhs.R;
 
 
-
 public class UserInfoRow extends RelativeLayout {
-    TextView item,name;
+    TextView item, name;
+
     public UserInfoRow(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context, attrs);
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        TypedArray array = context.obtainStyledAttributes(attrs,R.styleable.UserInfoRow);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.UserInfoRow);
         String item_title = array.getString(R.styleable.UserInfoRow_setItemTitle);
         String name_text = array.getString(R.styleable.UserInfoRow_setNameText);
         String hint_text = array.getString(R.styleable.UserInfoRow_setHintText);
 
-        LayoutInflater.from(context).inflate(R.layout.mine_userinfosettingrow,this);
+        LayoutInflater.from(context).inflate(R.layout.mine_userinfosettingrow, this);
         item = (TextView) findViewById(R.id.item_title);
         name = (TextView) findViewById(R.id.name_text);
         item.setText(item_title);

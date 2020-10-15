@@ -2,7 +2,9 @@ package com.apple.xhs.note;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -21,7 +23,6 @@ import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;
 
 
-
 public class NoteAllPinglun extends BaseActivity {
     @BindView(R.id.allpingluntoolbar)
     InfoSettingTitle toolbar;
@@ -29,6 +30,7 @@ public class NoteAllPinglun extends BaseActivity {
     LinearLayout parent;
     DisplayOptions displayOptions;
     List<Comment> list = new ArrayList<>();
+
     @Override
     public int getContentViewId() {
         return R.layout.note_showallpinglun;
@@ -51,14 +53,14 @@ public class NoteAllPinglun extends BaseActivity {
     private void initData() {
         Intent intent = getIntent();
         list = (List<Comment>) intent.getSerializableExtra("allpinglun");
-        toolbar.getTextView().setText(list.size()+" comments totally");
-        for(int i = 0;i < list.size() ;i++){
+        toolbar.getTextView().setText(list.size() + " comments totally");
+        for (int i = 0; i < list.size(); i++) {
             Comment comment = list.get(i);
             String url = comment.getUser().getHead().getUrl();
             String nickname = comment.getUser().getNickname();
             String createdAt = comment.getCreatedAt();
             String content = comment.getContent();
-            CommentModule module = new CommentModule(this,null);
+            CommentModule module = new CommentModule(this, null);
             module.getHeadPic().setOptions(displayOptions);
             module.getHeadPic().displayImage(url);
             module.getUserContent().setText(content);

@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:orientation="horizontal"
         android:background="@color/xhsColor"
         android:paddingTop="28dp">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="35dp"
@@ -16,6 +18,7 @@
             android:paddingLeft="10dp"
             android:layout_marginLeft="16dp"
             android:background="@drawable/search_bar_shape">
+
             <EditText
                 android:id="@+id/getuserinput"
                 android:layout_width="0dp"
@@ -30,8 +33,9 @@
                 android:drawableLeft="@mipmap/ic_home_search"
                 android:drawablePadding="5dp"
                 android:background="@null"
-                android:textCursorDrawable="@drawable/searchmaineditshape"/>
+                android:textCursorDrawable="@drawable/searchmaineditshape" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/cancel_search"
             android:layout_width="0dp"
@@ -41,16 +45,19 @@
             android:paddingTop="6dp"
             android:text="Cancel"
             android:textSize="18sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/defindedresult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/historybar"
                 android:layout_width="match_parent"
@@ -58,21 +65,24 @@
                 android:layout_marginBottom="10dp"
                 android:background="@color/backgroundcolor"
                 android:gravity="center_vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="History"
                     android:textSize="15sp"
-                    android:textColor="@color/gray"/>
+                    android:textColor="@color/gray" />
+
                 <ImageView
                     android:id="@+id/deletehistorysearch"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_history_delete"/>
+                    android:src="@drawable/ic_history_delete" />
             </RelativeLayout>
+
             <LinearLayout
                 android:id="@+id/historylable"
                 android:layout_width="wrap_content"
@@ -80,11 +90,13 @@
                 android:orientation="vertical">
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/hotlable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -96,6 +108,7 @@
                     android:background="@color/backgroundcolor" />
             </LinearLayout>
         </LinearLayout>
+
         <ListView
             android:id="@+id/searchlistview"
             android:layout_width="match_parent"

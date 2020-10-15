@@ -58,7 +58,7 @@ import me.xiaopan.sketch.request.DisplayOptions;
 
 
 public class NoteScan extends BaseActivity implements View.OnClickListener, View.OnLayoutChangeListener {
-    //伸缩toolbar
+    //The telescopic toolbar, jumps to the corresponding note list through different tag, but does not complete this function.
     @BindView(R.id.note_appbar)
     AppBarLayout appBarLayout;
     @BindView(R.id.note_collapsing)
@@ -95,24 +95,24 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
     LinearLayout note_pinglunparent;
     @BindView(R.id.note_fabupinglun)
     Button note_fabupinglun;
-   /* @BindView(R.id.current_userhead_img)
-    SketchImageView current_userhead_img;*/
+    /* @BindView(R.id.current_userhead_img)
+     SketchImageView current_userhead_img;*/
     @BindView(R.id.pinglunSum)
     TextView pinglunSum;
     @BindView(R.id.show_morePinglun)
     TextView show_morePinglun;
-    @BindView(R.id.note_guanzhu)
-    Button guanzhu;
+    @BindView(R.id.note_guanzhu)//follow
+            Button guanzhu;
     Note note;
-    //当前笔记作者
+    //Current note writer
     MyUser myUser;
-    //当前app用户
+    //Current app user
     MyUser currentUser;
     List<SketchImageView> list = new ArrayList<>();
     int keyHeight;
     DisplayOptions displayOptions;
     List<Comment> allpinglun = new ArrayList<>();
-    boolean isGuanzhu = false;
+    boolean isFollow = false;
 
     @Override
     public int getContentViewId() {
@@ -137,7 +137,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         pinglunSum.setOnClickListener(this);
         show_morePinglun.setOnClickListener(this);
         usernametoolbar.setOnClickListener(this);
-     /*   userheadimagecontext.setOnClickListener(this);*/
+        /*   userheadimagecontext.setOnClickListener(this);*/
         usernamecontext.setOnClickListener(this);
         guanzhu.setOnClickListener(this);
     }
@@ -163,13 +163,15 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         map.put("Why people love minecraft", R.drawable.note2);
         map.put("S10 Champion is on", R.drawable.note3);
         map.put("Java is the best language", R.drawable.note4);
-        map.put("Compx576 is a good course",R.drawable.note5);
+        map.put("Compx576 is a good course", R.drawable.note5);
 
         String title = note.getTitle();
         SketchImageView imageView = new SketchImageView(this);
-        if (map.get(title)==null){
+        if (map.get(title) == null) {
             imageView.displayResourceImage(R.drawable.note5);
-        }else { imageView.displayResourceImage(map.get(title));}
+        } else {
+            imageView.displayResourceImage(map.get(title));
+        }
 
         imageView.getOptions().setDecodeGifImage(true);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -178,11 +180,12 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
 
         MySketchViewPagerAdapter adapter = new MySketchViewPagerAdapter(list);
         pic_viewpager.setAdapter(adapter);
+        //The picture is read locally, and the annotated statement is to read the picture from the cloud service.
         //sketchimageview.displayImage(note.getImage().get(0).getUrl());
-        //评论区头像设为当前用户
-       /* current_userhead_img.displayImage(currentUser.getHead().getUrl());*/
+        //The avatar of the comment area is set to the current user
+        /* current_userhead_img.displayImage(currentUser.getHead().getUrl());*/
         usernametoolbar.setText(myUser.getNickname());
-     /*   userheadimagecontext.displayImage(myUser.getHead().getUrl());*/
+        /*   userheadimagecontext.displayImage(myUser.getHead().getUrl());*/
         usernamecontext.setText(myUser.getNickname());
         usernotetitle.setText(note.getTitle());
         usernotecontext.setText(note.getContent());
@@ -251,18 +254,18 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         });
     }
 
-    //设置toolbar
+    //set toolbar
     private void setCollapsingToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //返回
+        //return
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        //右菜单，从底部弹出分享，并设置背景色为半透明
+        //Right menu, pop up to share from the bottom, and set the background color to translucent
     }
 
 
@@ -272,7 +275,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         switch (view.getId()) {
 
             case R.id.note_click_pinglun:
-                //弹出软键盘
+                //Pop up soft keyboard
                 popedittext.setVisibility(View.VISIBLE);
                 editText.setFocusable(true);
                 editText.setFocusableInTouchMode(true);
@@ -280,7 +283,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 break;
-            //点击发布评论按钮
+            //Click the post button
             case R.id.note_fabupinglun:
                 String pingluncontent = editText.getText().toString();
                 if (pingluncontent.equals("")) {
@@ -299,7 +302,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
                 intent.putExtra("allpinglun", (Serializable) allpinglun);
                 startActivity(intent);
                 break;
-         /*   case R.id.userheadimage_context:*/
+            /*   case R.id.userheadimage_context:*/
             case R.id.username_context:
             case R.id.username_toolbar:
                 Intent notelist = new Intent(NoteScan.this, SelfNoteScan.class);
@@ -312,7 +315,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         }
     }
 
-    // 添加用户提交的评论到界面
+    // Add user-submitted comments to the interface
     private void addPingLunContentToView(String s) {
         CommentModule layout = new CommentModule(this, null);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -330,7 +333,7 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         imm2.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    //监听软键盘是否谈起
+    //Monitor whether the soft keyboard pops up
     @Override
     public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
         if (i7 != 0 && i3 != 0 && (i7 - i3 > keyHeight)) {
@@ -340,34 +343,19 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         }
     }
 
-    // 弹出框消失后恢复activitiy颜色
-    public class MyPopUpWindow implements PopupWindow.OnDismissListener {
-        @Override
-        public void onDismiss() {
-            backgroundAlpha(1.0f);
-        }
-    }
-
-    //设置背景色
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = bgAlpha;
-        getWindow().setAttributes(lp);
-    }
-
-    //关注该用户
+    //follow this writer
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void guanZhu() {
-        if (isGuanzhu == false) {
+        if (isFollow == false) {
             guanzhu.setText("Followed");
             guanzhu.setTextColor(getResources().getColor(R.color.gray));
             guanzhu.setBackground(getResources().getDrawable(R.drawable.cancelguanzhu_buttonshape));
-            isGuanzhu = true;
+            isFollow = true;
         } else {
             guanzhu.setText("+ Follow");
             guanzhu.setTextColor(getResources().getColor(R.color.xhsColor));
             guanzhu.setBackground(getResources().getDrawable(R.drawable.addguanzhu_buttonshape));
-            isGuanzhu = false;
+            isFollow = false;
         }
     }
 

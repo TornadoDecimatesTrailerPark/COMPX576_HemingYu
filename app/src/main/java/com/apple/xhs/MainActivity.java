@@ -2,6 +2,7 @@ package com.apple.xhs;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import android.view.View;
@@ -15,10 +16,14 @@ import butterknife.BindView;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    @BindView(R.id.tab_home) TextView tab_home;
-    @BindView(R.id.tab_me) TextView tab_me;
-    @BindView(R.id.fragment_home) View fragment_home;
-    @BindView(R.id.fragment_me) View fragment_me;
+    @BindView(R.id.tab_home)
+    TextView tab_home;
+    @BindView(R.id.tab_me)
+    TextView tab_me;
+    @BindView(R.id.fragment_home)
+    View fragment_home;
+    @BindView(R.id.fragment_me)
+    View fragment_me;
 
     long exitTime;
 
@@ -53,7 +58,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         resetTabColor();
         resetFragment();
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tab_home:
                 fragment_home.setVisibility(View.VISIBLE);
                 tab_home.setSelected(true);
@@ -64,22 +69,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
     }
+
     @SuppressLint("ResourceAsColor")
-    public void resetTabColor(){
+    public void resetTabColor() {
         tab_home.setSelected(false);
         tab_me.setSelected(false);
     }
-    public void resetFragment(){
+
+    public void resetFragment() {
         fragment_home.setVisibility(View.INVISIBLE);
         fragment_me.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onBackPressed() {
-        if(System.currentTimeMillis() - exitTime > 2000){
-            Toast.makeText(this,"Click twice to quit",Toast.LENGTH_SHORT).show();
+        if (System.currentTimeMillis() - exitTime > 2000) {
+            Toast.makeText(this, "Click twice to quit", Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
-        }else {
+        } else {
             ActivityCollecter.finishAll();
         }
     }

@@ -3,34 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <fragment
             android:id="@+id/fragment_home"
             android:name="com.apple.xhs.five_fragment.home_activity.HomeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
         <fragment
             android:id="@+id/fragment_me"
             android:name="com.apple.xhs.five_fragment.mine_activity.MeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#efefef"/>
+            android:background="#efefef" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:background="@color/toolbar_search">
+
             <TextView
                 android:id="@+id/tab_home"
                 android:layout_width="0dp"
@@ -42,7 +49,8 @@
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
                 android:textColor="@drawable/tab_text_color"
-                android:gravity="center"/>
+                android:gravity="center" />
+
             <TextView
                 android:id="@+id/tab_me"
                 android:layout_width="0dp"

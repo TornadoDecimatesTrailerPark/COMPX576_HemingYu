@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -36,7 +37,7 @@ import java.util.List;
 import butterknife.BindView;
 import me.xiaopan.sketch.SketchImageView;
 
-
+//edit notes page
 public class NoteEditView extends BaseActivity implements View.OnClickListener, TextWatcher {
     @BindView(R.id.send_note_title)
     InfoSettingTitle noteToolBar;
@@ -50,30 +51,30 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     ImageView noteAddPic;
 
 
-    @BindView(R.id.note_nanren)
-    CheckBox noteNanren;
-    @BindView(R.id.note_hufu)
-    CheckBox noteHufu;
-    @BindView(R.id.note_jujia)
-    CheckBox noteJujia;
-    @BindView(R.id.note_shishang)
-    CheckBox noteShishang;
-    @BindView(R.id.note_meishi)
-    CheckBox noteMeishi;
-    @BindView(R.id.note_yundong)
-    CheckBox noteYundong;
-    @BindView(R.id.note_lvxing)
-    CheckBox noteLvxing;
-    @BindView(R.id.note_caizhuang)
-    CheckBox noteCaizhuang;
-    @BindView(R.id.note_muying)
-    CheckBox noteMuying;
+    @BindView(R.id.note_sneaker)
+    CheckBox noteSneaker;
+    @BindView(R.id.note_fashion)
+    CheckBox noteFashion;
+    @BindView(R.id.note_trip)
+    CheckBox noteTrip;
+    @BindView(R.id.note_food)
+    CheckBox noteFood;
+    @BindView(R.id.note_game)
+    CheckBox noteGame;
+    @BindView(R.id.note_movie)
+    CheckBox noteMovie;
+    @BindView(R.id.note_music)
+    CheckBox noteMusic;
+    @BindView(R.id.note_pc)
+    CheckBox notePc;
+    @BindView(R.id.note_phone)
+    CheckBox notePhone;
 
     String title;
     String context;
     List<String> getCheckData = new ArrayList<>();
     List<CheckBox> checkItem = new ArrayList<>();
-    String[] strings = {"Sneaker","Fashion","Trip","Food","Game","Movie","Music","PC","Phone"};
+    String[] strings = {"Sneaker", "Fashion", "Trip", "Food", "Game", "Movie", "Music", "PC", "Phone"};
     LinearLayout linearLayout;
     private List<String> pathList = new ArrayList<>();
     ImgSelConfig config;
@@ -100,7 +101,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         }
     };
 
-    //ImageSelector框架设置UI及功能
+    //ImageSelector framework sets UI and functions
     private void initImageSelector() {
         config = new ImgSelConfig.Builder(this, loader)
                 .multiSelect(true)
@@ -112,24 +113,23 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
     }
 
 
-
     private void initCheckItem() {
-        checkItem.add(noteNanren);
-        checkItem.add(noteHufu);
-        checkItem.add(noteJujia);
-        checkItem.add(noteShishang);
-        checkItem.add(noteMeishi);
-        checkItem.add(noteYundong);
-        checkItem.add(noteLvxing);
-        checkItem.add(noteCaizhuang);
-        checkItem.add(noteMuying);
+        checkItem.add(noteSneaker);
+        checkItem.add(noteFashion);
+        checkItem.add(noteTrip);
+        checkItem.add(noteFood);
+        checkItem.add(noteGame);
+        checkItem.add(noteMovie);
+        checkItem.add(noteMusic);
+        checkItem.add(notePc);
+        checkItem.add(notePhone);
     }
 
     private void initViewListener() {
-        //顶栏
+        //Toolbar on top
         noteToolBar.setImgListener(this);
         noteToolBar.setDoneListener(this);
-        //文本图片
+        //pic in note
         noteTitle.setOnClickListener(this);
         noteContext.setOnClickListener(this);
         noteAddPic.setOnClickListener(this);
@@ -137,22 +137,22 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
         noteTitle.addTextChangedListener(this);
         noteContext.addTextChangedListener(this);
-        //复选框
-        noteNanren.setOnClickListener(this);
-        noteHufu.setOnClickListener(this);
-        noteJujia.setOnClickListener(this);
-        noteShishang.setOnClickListener(this);
-        noteMeishi.setOnClickListener(this);
-        noteYundong.setOnClickListener(this);
-        noteLvxing.setOnClickListener(this);
-        noteCaizhuang.setOnClickListener(this);
-        noteMuying.setOnClickListener(this);
+        //Check box
+        noteSneaker.setOnClickListener(this);
+        noteFashion.setOnClickListener(this);
+        noteTrip.setOnClickListener(this);
+        noteFood.setOnClickListener(this);
+        noteGame.setOnClickListener(this);
+        noteMovie.setOnClickListener(this);
+        noteMusic.setOnClickListener(this);
+        notePc.setOnClickListener(this);
+        notePhone.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.my_setting_back:
 
                 finish();
@@ -161,27 +161,27 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
                 title = noteTitle.getText().toString();
                 context = noteContext.getText().toString();
                 addCheckData();
-                //addCheckData();//返回数据到 getCheckData；
-                if (pathList.size()==0){
-                    Toast.makeText(this,"Please add at least one image",Toast.LENGTH_SHORT).show();
-                }else {
-                    AddDataBmob.addDataToNote(title,context,pathList,getCheckData);
+                //addCheckData();//return data to getCheckData；
+                if (pathList.size() == 0) {
+                    Toast.makeText(this, "Please add at least one image", Toast.LENGTH_SHORT).show();
+                } else {
+                    AddDataBmob.addDataToNote(title, context, pathList, getCheckData);
                     finish();
                 }
                 break;
             case R.id.note_add_pic:
                 pathList.clear();
-                ImgSelActivity.startActivity(this, config, REQUEST_CODE);  // 开启图片选择器
+                ImgSelActivity.startActivity(this, config, REQUEST_CODE);  // Open the picture selector
                 break;
-            case R.id.note_nanren:
-            case R.id.note_hufu:
-            case R.id.note_jujia:
-            case R.id.note_shishang:
-            case R.id.note_meishi:
-            case R.id.note_yundong:
-            case R.id.note_lvxing:
-            case R.id.note_caizhuang:
-            case R.id.note_muying:
+            case R.id.note_sneaker:
+            case R.id.note_fashion:
+            case R.id.note_trip:
+            case R.id.note_food:
+            case R.id.note_game:
+            case R.id.note_movie:
+            case R.id.note_music:
+            case R.id.note_pc:
+            case R.id.note_phone:
                 checkLimit();
                 break;
 
@@ -204,7 +204,7 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         final SketchImageView img = new SketchImageView(this);
         TextView textView = new TextView(this);
         img.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
-        textView.setLayoutParams(new LinearLayout.LayoutParams(20,300));
+        textView.setLayoutParams(new LinearLayout.LayoutParams(20, 300));
         img.setScaleType(ImageView.ScaleType.CENTER_CROP);
         img.displayImage(s);
         linearLayout.addView(textView);
@@ -212,16 +212,16 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NoteEditView.this,NoteEditShowBigPic.class);
-                intent.putExtra("showbigpic",s);
+                Intent intent = new Intent(NoteEditView.this, NoteEditShowBigPic.class);
+                intent.putExtra("showbigpic", s);
                 startActivity(intent);
-                overridePendingTransition(R.anim.showbigpic_in,R.anim.showbigpic_out);
+                overridePendingTransition(R.anim.showbigpic_in, R.anim.showbigpic_out);
             }
         });
         img.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                popDeleteDialog(view,s);
+                popDeleteDialog(view, s);
                 return true;
             }
         });
@@ -247,20 +247,21 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
     private void addCheckData() {
         getCheckData.clear();
-        for(int i = 0;i<checkItem.size();i++){
-            if(checkItem.get(i).isChecked()){
+        for (int i = 0; i < checkItem.size(); i++) {
+            if (checkItem.get(i).isChecked()) {
                 getCheckData.add(strings[i]);
             }
         }
     }
-//    private void deleteImage(View view){
+
+    //    private void deleteImage(View view){
 //        for(int i = 0;i<addImageList.size();i++){
 //            if(addImageList.get(i)==view){
 //                linearLayout.removeViewAt();
 //            }
 //        }
 //    }
-    //设置字数
+    //set the number limitation of words
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -273,20 +274,21 @@ public class NoteEditView extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void afterTextChanged(Editable editable) {
-        limit.setHint((30-noteTitle.getText().toString().length())+"");
+        limit.setHint((30 - noteTitle.getText().toString().length()) + "");
     }
-    public void checkLimit(){
-        //感觉逻辑写的不好
+
+    public void checkLimit() {
+        //check limit number
         int check = 0;
-        for(CheckBox box : checkItem){
-            if(box.isChecked()&&check<3){
-                check ++;
+        for (CheckBox box : checkItem) {
+            if (box.isChecked() && check < 3) {
+                check++;
             }
         }
-        for (CheckBox box : checkItem){
-            if(!box.isChecked()&&check==3){
+        for (CheckBox box : checkItem) {
+            if (!box.isChecked() && check == 3) {
                 box.setClickable(false);
-            }else if(check<3){
+            } else if (check < 3) {
                 box.setClickable(true);
             }
         }

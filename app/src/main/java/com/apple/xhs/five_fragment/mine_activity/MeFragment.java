@@ -8,8 +8,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +31,7 @@ import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;
 
 
-
+// the mian page of personal information and settings
 
 public class MeFragment extends Fragment implements View.OnClickListener {
 
@@ -39,14 +41,14 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_me_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment_me_layout, container, false);
         initView(view);
         setViewListener(view);
         return view;
     }
 
     private void initView(View view) {
-       /* head_icon = view.findViewById(R.id.img_me_user_head);*/
+        /* head_icon = view.findViewById(R.id.img_me_user_head);*/
         nickname = view.findViewById(R.id.me_nickname);
     }
 
@@ -66,18 +68,18 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
         DisplayOptions displayOptions = new DisplayOptions();
         displayOptions.setImageProcessor(CircleImageProcessor.getInstance());
-      /*  head_icon.setOptions(displayOptions);*/
+        /*  head_icon.setOptions(displayOptions);*/
         /*if(myUser.getHead()!=null){
             head_icon.displayImage(myUser.getHead().getUrl());
         }*/
-        if(myUser.getNickname() != null){
+        if (myUser.getNickname() != null) {
             nickname.setText(myUser.getNickname());
         }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.mine_exit_account:
                 popExitAialog();
                 break;
@@ -92,11 +94,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.myselfnote:
                 Intent selfnote = new Intent(getActivity(), SelfNoteScan.class);
-                selfnote.putExtra("userselfnote",BmobUser.getCurrentUser(MyUser.class));
+                selfnote.putExtra("userselfnote", BmobUser.getCurrentUser(MyUser.class));
                 startActivity(selfnote);
                 break;
             case R.id.mypasswordchange:
-                startActivity(new Intent(getActivity(),ChangePassword.class));
+                startActivity(new Intent(getActivity(), ChangePassword.class));
                 break;
             case R.id.clearcache:
                 popAlertDialog();
@@ -107,19 +109,19 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode){
+        switch (resultCode) {
             case 0:
                 break;
             case 1:
-                Uri originalUri=data.getData();
-                String []imgs1={MediaStore.Images.Media.DATA};//change img url to store path
-                Cursor cursor=getActivity().managedQuery(originalUri, imgs1, null, null, null);
-                int index=cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                Uri originalUri = data.getData();
+                String[] imgs1 = {MediaStore.Images.Media.DATA};//change img url to store path
+                Cursor cursor = getActivity().managedQuery(originalUri, imgs1, null, null, null);
+                int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                 cursor.moveToFirst();
                 String tempPath = Environment.getExternalStorageDirectory().getPath()
                         + "/XHS/temp/" + System.currentTimeMillis() + ".jpg";
 
-                Log.i("bmob","img address：" + tempPath);
+                Log.i("bmob", "img address：" + tempPath);
 
                 head_icon.displayImage(tempPath);
                 break;
@@ -131,7 +133,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getContext(),"Finish clear",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Finish clear", Toast.LENGTH_SHORT).show();
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -160,7 +162,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                         //confirm quit
                         BmobUser.logOut();   //clear cache
                         startActivity(new Intent(getActivity(), Login.class));
-                        Toast.makeText(getContext(),"Quit",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Quit", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

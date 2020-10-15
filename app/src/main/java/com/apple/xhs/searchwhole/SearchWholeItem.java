@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -25,8 +26,6 @@ import butterknife.BindView;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-
-
 
 
 public class SearchWholeItem extends BaseActivity implements View.OnClickListener, MyRecyclerViewAdapter.OnItemClickListener {
@@ -58,11 +57,11 @@ public class SearchWholeItem extends BaseActivity implements View.OnClickListene
     private void initData() {
         Intent intent = getIntent();
         toolbarText = intent.getStringExtra("lable");
-        if(toolbarText.equals("allrelated")){
+        if (toolbarText.equals("allrelated")) {
             getIntentList = (List<Note>) intent.getSerializableExtra("notelist");
-            toolbar.setTitleText("全部");
+            toolbar.setTitleText("All");
             initView(getIntentList);
-        }else {
+        } else {
             toolbar.setTitleText(toolbarText);
             queryDate(toolbarText);
         }
@@ -74,29 +73,29 @@ public class SearchWholeItem extends BaseActivity implements View.OnClickListene
         query1.findObjects(new FindListener<Note>() {
             @Override
             public void done(List<Note> list, BmobException e) {
-                if (e==null){
+                if (e == null) {
                     queryList = new ArrayList<>();
-                    for (Note note:list){
-                        if (note.getTitle().contains(s)){
+                    for (Note note : list) {
+                        if (note.getTitle().contains(s)) {
                             queryList.add(note);
                         }
                     }
-                    if (queryList.size()==0){
+                    if (queryList.size() == 0) {
                         norelated.setVisibility(View.VISIBLE);
-                    }else {
+                    } else {
                         //代码块
                         initView(queryList);
                     }
-                }else {
-                    Log.i("bmob","模糊查询失败" + e.getErrorCode() + e.getMessage());
+                } else {
+                    Log.i("bmob", "query failed" + e.getErrorCode() + e.getMessage());
                 }
             }
         });
     }
 
     private void initView(List<Note> list) {
-        searchresultview.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        if(space==null){
+        searchresultview.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        if (space == null) {
             space = new SpacesItemDecoration(20);
             searchresultview.addItemDecoration(space);
         }
@@ -111,7 +110,7 @@ public class SearchWholeItem extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.my_setting_back:
                 finish();
                 break;
@@ -126,18 +125,20 @@ public class SearchWholeItem extends BaseActivity implements View.OnClickListene
         startActivity(intent);
     }
 
-    //设置item外边距
-    public class SpacesItemDecoration extends RecyclerView.ItemDecoration{
+    //item border
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
         int space = 0;
-        public SpacesItemDecoration(int space){
+
+        public SpacesItemDecoration(int space) {
             this.space = space;
         }
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state){
-            outRect.left=space;
-            outRect.right=space;
-            outRect.bottom=space*2;
-            if(parent.getChildAdapterPosition(view)==0||parent.getChildAdapterPosition(view)==1){
-                outRect.top=space;
+
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space * 2;
+            if (parent.getChildAdapterPosition(view) == 0 || parent.getChildAdapterPosition(view) == 1) {
+                outRect.top = space;
             }
         }
     }

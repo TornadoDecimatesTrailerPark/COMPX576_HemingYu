@@ -2,7 +2,9 @@ package com.apple.xhs.custom_view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+
 import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
@@ -11,14 +13,14 @@ import android.widget.TextView;
 import com.apple.xhs.R;
 
 
-
 public class HotSearchLable extends LinearLayout {
     TextView textView;
+
     public HotSearchLable(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        TypedArray array = context.obtainStyledAttributes(attrs,R.styleable.HotSearchLable);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.HotSearchLable);
         String text = array.getString(R.styleable.HotSearchLable_setHotLable);
-        LayoutInflater.from(context).inflate(R.layout.hotsearchlabelmerge,this);
+        LayoutInflater.from(context).inflate(R.layout.hotsearchlabelmerge, this);
         textView = findViewById(R.id.searchlable);
         textView.setText(text);
     }

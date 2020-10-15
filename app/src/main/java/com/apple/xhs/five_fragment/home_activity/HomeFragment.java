@@ -25,18 +25,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+//This is the layout class of the main page, which is used to load the information
+// in the main page. The pages distinguished by different tags can be classified and displayed.
+// only need to add an additional "Notes" class, but I did not complete this module.
 
-
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends Fragment implements View.OnClickListener {
     TextView main_search_bar;
-    View popUpView,homeTop;
+    View popUpView, homeTop;
     ImageView openCamera;
-    
+
     ViewPager viewPager;
     PopupWindow popupWindow;
     WindowManager windowManager;
     MyFragmentPagerAdapter adapter;
-    
+
     List<Fragment> data = new ArrayList<>();
     List<String> list = new ArrayList<>();
 
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment_home_layout, container, false);
         initViewPopWindow(view);
         initOthersView(view);
         initViewPager(view);
@@ -67,25 +69,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void initViewPager(View view) {
         viewPager = view.findViewById(R.id.home_viewpager);
         getFragment();
-        adapter = new MyFragmentPagerAdapter(getChildFragmentManager(),data,list);
+        adapter = new MyFragmentPagerAdapter(getChildFragmentManager(), data, list);
         addAllFragment();
         viewPager.setAdapter(adapter);
     }
 
     private void addAllFragment() {
-        adapter.addFragment(Notes,"AA");
+        adapter.addFragment(Notes, "AA");
     }
 
     private void getFragment() {
         Notes = new Notes();
-     
+
     }
 
     //pop uo window
     private void initViewPopWindow(View view) {
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         windowManager = getActivity().getWindowManager();
-        popupWindow = new PopupWindow(popUpView,windowManager.getDefaultDisplay().getWidth(),
+        popupWindow = new PopupWindow(popUpView, windowManager.getDefaultDisplay().getWidth(),
                 windowManager.getDefaultDisplay().getHeight());
         popupWindow.setTouchable(true);
         popupWindow.setFocusable(true);
@@ -94,15 +96,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         homeTop = view.findViewById(R.id.home_top);
     }
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.main_search_bar:
                 startActivity(new Intent(getActivity(), SearchMain.class));
                 break;
             case R.id.home_open_camera:
                 startActivity(new Intent(getActivity(), HomeOpenCamera.class));
-                getActivity().overridePendingTransition(R.anim.home_camera_open,R.anim.home_camera_close);
+                getActivity().overridePendingTransition(R.anim.home_camera_open, R.anim.home_camera_close);
                 break;
         }
     }

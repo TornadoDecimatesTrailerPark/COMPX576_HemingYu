@@ -5,6 +5,5 @@
         android:enabled="true"
         android:icon="@drawable/note_icon_more_white"
         app:showAsAction="always"
-        android:title=" ">
-    </item>
+        android:title=" "></item>
 </menu>

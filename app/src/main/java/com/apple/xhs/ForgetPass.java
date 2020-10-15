@@ -3,7 +3,9 @@ package com.apple.xhs;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
 import androidx.annotation.Nullable;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,19 +23,19 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 
 
-
 public class ForgetPass extends BaseActivity implements TextWatcher {
     @BindView(R.id.user_email_toResetP)
     TextView reset;
     @BindView(R.id.bt_toResetP)
     Button toReset;
-    Handler handler = new Handler(){
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             toReset.setText(msg.obj.toString());
         }
     };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,16 +49,17 @@ public class ForgetPass extends BaseActivity implements TextWatcher {
     }
 
     @OnClick(R.id.bt_toResetP)
-    public void ResetOnClick(){
+    public void ResetOnClick() {
         toReset.setEnabled(false);
-        new Thread(){
+        new Thread() {
             int i = 60;
+
             @Override
             public void run() {
                 super.run();
-                while (i >= 0){
+                while (i >= 0) {
                     Message message = Message.obtain();
-                    message.obj = "重置密码(" + i + "s)";
+                    message.obj = "reset(" + i + "s)";
                     handler.sendMessage(message);
                     try {
                         Thread.sleep(1000);
@@ -69,7 +72,7 @@ public class ForgetPass extends BaseActivity implements TextWatcher {
                     @Override
                     public void run() {
                         toReset.setEnabled(true);
-                        toReset.setText("重置密码");
+                        toReset.setText("reset");
                     }
                 });
             }
@@ -78,15 +81,14 @@ public class ForgetPass extends BaseActivity implements TextWatcher {
         BmobUser.resetPasswordByEmail(email, new UpdateListener() {
             @Override
             public void done(BmobException e) {
-                if(e==null){
-                    Toast.makeText(ForgetPass.this,"重置密码请求成功，请到" + email + "邮箱进行密码重置操作",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(ForgetPass.this, ErrorCollecter.errorCode(e),Toast.LENGTH_SHORT).show();
+                if (e == null) {
+                    Toast.makeText(ForgetPass.this, "reset" + email + "find in email", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ForgetPass.this, ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
 
 
     public void backToLogin(View view) {
@@ -105,7 +107,7 @@ public class ForgetPass extends BaseActivity implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if (reset.getText().toString().matches("[a-zA-Z_0-9]+@(([a-zA-z0-9]-*)+\\.){1,3}[a-zA-z\\-]+")){
+        if (reset.getText().toString().matches("[a-zA-Z_0-9]+@(([a-zA-z0-9]-*)+\\.){1,3}[a-zA-z\\-]+")) {
             toReset.setEnabled(true);
         }
     }

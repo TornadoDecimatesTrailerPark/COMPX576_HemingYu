@@ -5,35 +5,40 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:scrollbars="none">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:background="@mipmap/mine_zone_bg"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <FrameLayout
                     android:id="@+id/me_head"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp">
-            <!--        <me.xiaopan.sketch.SketchImageView
-                        android:id="@+id/img_me_user_head"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:src="@drawable/xy_walkthroughs_account"/>-->
-         <!--           <ImageView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:background="@drawable/user_head_icon"/>-->
+                    <!--        <me.xiaopan.sketch.SketchImageView
+                                android:id="@+id/img_me_user_head"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:src="@drawable/xy_walkthroughs_account"/>-->
+                    <!--           <ImageView
+                                   android:layout_width="75dp"
+                                   android:layout_height="75dp"
+                                   android:background="@drawable/user_head_icon"/>-->
                 </FrameLayout>
+
                 <TextView
                     android:id="@+id/me_nickname"
                     android:layout_width="wrap_content"
@@ -45,11 +50,13 @@
                     android:textSize="17sp" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="#f2f2f2"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -58,26 +65,33 @@
                 android:text="Setting"
                 android:textColor="#000" />
         </LinearLayout>
+
         <com.apple.xhs.custom_view.InfoSettingRow
             android:id="@+id/myselfnote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:setRowTitle="My notes                " />
+
         <View style="@style/mine_setting_showline" />
+
         <com.apple.xhs.custom_view.InfoSettingRow
             android:id="@+id/ge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:setRowTitle="Information            " />
+
         <View style="@style/mine_setting_showline" />
 
         <View style="@style/mine_setting_showline" />
+
         <com.apple.xhs.custom_view.InfoSettingRow
             android:id="@+id/mypasswordchange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:setRowTitle="Change password" />
+
         <View style="@style/mine_setting_showline" />
+
         <com.apple.xhs.custom_view.InfoSettingRow
             android:id="@+id/clearcache"
             android:layout_width="match_parent"
@@ -89,11 +103,13 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="#f2f2f2" />
+
         <com.apple.xhs.custom_view.InfoSettingRow
             android:id="@+id/mine_exit_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:setRowTitle="Log out                   " />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"

@@ -2,7 +2,9 @@ package com.apple.xhs.five_fragment.mine_activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,7 +17,6 @@ import com.bean.MyUser;
 
 import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
-
 
 
 public class MineSettingID extends BaseActivity implements View.OnClickListener {
@@ -51,23 +52,23 @@ public class MineSettingID extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.my_setting_back:
-                setResult(0,new Intent(this,MineUserInfoSetting.class));
+                setResult(0, new Intent(this, MineUserInfoSetting.class));
                 finish();
                 break;
             case R.id.my_setting_done:
                 String string = idReset.getText().toString();
-                if (!myUser.getCopyId().equals(string) && myUser.getChange()){
-                    Toast.makeText(this,"ID can only be changed once",Toast.LENGTH_SHORT).show();
+                if (!myUser.getCopyId().equals(string) && myUser.getChange()) {
+                    Toast.makeText(this, "ID can only be changed once", Toast.LENGTH_SHORT).show();
                     return;
-                }else if(string.equals("")){
-                    Toast.makeText(this,"Nickname can not be empty",Toast.LENGTH_SHORT).show();
+                } else if (string.equals("")) {
+                    Toast.makeText(this, "Nickname can not be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent1 = new Intent(MineSettingID.this,MineUserInfoSetting.class);
-                intent1.putExtra("id",string);
-                setResult(2,intent1);
+                Intent intent1 = new Intent(MineSettingID.this, MineUserInfoSetting.class);
+                intent1.putExtra("id", string);
+                setResult(2, intent1);
                 finish();
                 break;
         }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
-
+//This is the class for the list of notes on the main page
 public class Notes extends Fragment implements MyRecyclerViewAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
     View view;
     RecyclerView recyclerView;
@@ -50,12 +51,12 @@ public class Notes extends Fragment implements MyRecyclerViewAdapter.OnItemClick
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view==null){
-            view = inflater.inflate(R.layout.home_viewp_itemv1,container,false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.home_viewp_itemv1, container, false);
             initView(view);
-        }else {
+        } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
-            if(viewGroup != null){
+            if (viewGroup != null) {
                 viewGroup.removeView(view);
             }
         }
@@ -75,9 +76,10 @@ public class Notes extends Fragment implements MyRecyclerViewAdapter.OnItemClick
         swiperefreshlayout.setOnRefreshListener(this);
 
     }
+
     private void initPagerView() {
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        if(space==null){
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        if (space == null) {
             space = new SpacesItemDecoration(20);
             recyclerView.addItemDecoration(space);
         }
@@ -102,44 +104,47 @@ public class Notes extends Fragment implements MyRecyclerViewAdapter.OnItemClick
                 initPagerView();
                 swiperefreshlayout.setRefreshing(false);
             }
-        },2000);
+        }, 2000);
     }
 
 
-    public class SpacesItemDecoration extends RecyclerView.ItemDecoration{
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
         int space = 0;
-        public SpacesItemDecoration(int space){
+
+        public SpacesItemDecoration(int space) {
             this.space = space;
         }
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state){
-            outRect.left=space;
-            outRect.right=space;
-            outRect.bottom=space*2;
-            if(parent.getChildAdapterPosition(view)==0||parent.getChildAdapterPosition(view)==1){
-                outRect.top=space;
+
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space * 2;
+            if (parent.getChildAdapterPosition(view) == 0 || parent.getChildAdapterPosition(view) == 1) {
+                outRect.top = space;
             }
         }
     }
-    public void getNoteByStyle(boolean isCache){
+
+    public void getNoteByStyle(boolean isCache) {
         BmobQuery<Note> query = new BmobQuery<Note>();
         query.order("-up");
         query.include("author");
         query.setLimit(20);
-        if(isCache){
-            query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);    // 第一次进入的话，则设置策略为CACHE_ELSE_NETWORK
-        }else{
-            query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);    // 下拉刷新的话，则设置策略为NETWORK_ELSE_CACHE
+        if (isCache) {
+            query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);    // If enter for the first time, set the policy to CACHE_ELSE_NETWORK.
+        } else {
+            query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);    // If enter for the first time, set the policy to NETWORK_ELSE_CACHE
         }
         query.findObjects(new FindListener<Note>() {
             @Override
             public void done(List<Note> notelist, BmobException e) {
-                if(e==null){
+                if (e == null) {
                     dataSize = notelist.size();
                     data = notelist;
                     initPagerView();
-                }else{
+                } else {
                     Toast.makeText(InitBmob.getContext(), ErrorCollecter.errorCode(e), Toast.LENGTH_SHORT).show();
-                    Log.i("bmob",e + "Search failure");
+                    Log.i("bmob", e + "Search failure");
                 }
             }
         });

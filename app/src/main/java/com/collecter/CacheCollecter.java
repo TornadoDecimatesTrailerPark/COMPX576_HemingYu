@@ -15,12 +15,14 @@ public class CacheCollecter {
         }
         return getFormatSize(cacheSize);
     }
+
     public static void clearAllCache(Context context) {
         deleteDir(context.getCacheDir());
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             deleteDir(context.getExternalCacheDir());
         }
     }
+
     private static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();
@@ -33,17 +35,18 @@ public class CacheCollecter {
         }
         return dir.delete();
     }
-    // 获取文件
-    // Context.getExternalFilesDir() --> SDCard/Android/data/你的应用的包名/files/
-    // 目录，一般放一些长时间保存的数据
+
+    // get cache
+    // Context.getExternalFilesDir() --> SDCard/Android/data/package/files/
+    // Directory, which usually keeps some data that has been preserved for a long time.
     // Context.getExternalCacheDir() -->
-    // SDCard/Android/data/你的应用包名/cache/目录，一般存放临时缓存数据
+    // SDCard/Android/data/package/cache/list，data that has been preserved for a short time
     public static long getFolderSize(File file) throws Exception {
         long size = 0;
         try {
             File[] fileList = file.listFiles();
             for (int i = 0; i < fileList.length; i++) {
-                // 如果下面还有文件
+                // if other docs
                 if (fileList[i].isDirectory()) {
                     size = size + getFolderSize(fileList[i]);
                 } else {
@@ -55,10 +58,9 @@ public class CacheCollecter {
         }
         return size;
     }
+
     /**
-     * 格式化单位
-     *
-     * @param size
+     * format
      */
     public static String getFormatSize(double size) {
         double kiloByte = size / 1024;

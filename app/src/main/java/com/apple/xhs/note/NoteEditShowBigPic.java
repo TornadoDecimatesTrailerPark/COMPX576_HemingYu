@@ -1,7 +1,9 @@
 package com.apple.xhs.note;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.View;
 
 import com.apple.xhs.R;
@@ -11,11 +13,12 @@ import butterknife.BindView;
 import me.xiaopan.sketch.SketchImageView;
 import me.xiaopan.sketch.viewfun.zoom.ImageZoomer;
 
-
+//On the edit notes page, click to show the full picture
 
 public class NoteEditShowBigPic extends BaseActivity {
     @BindView(R.id.show_big_pic)
     SketchImageView imageView;
+
     @Override
     public int getContentViewId() {
         return R.layout.note_edit_showbigpic;
@@ -30,13 +33,13 @@ public class NoteEditShowBigPic extends BaseActivity {
     private void initView() {
         imageView.setZoomEnabled(true);
         ImageZoomer imageZoomer = new ImageZoomer(imageView);
-        imageZoomer.zoom(3f,true);
+        imageZoomer.zoom(3f, true);
         imageView.displayImage(getIntent().getStringExtra("showbigpic"));
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                overridePendingTransition(R.anim.showbigpic_out,R.anim.showbigpic_out_big);
+                overridePendingTransition(R.anim.showbigpic_out, R.anim.showbigpic_out_big);
             }
         });
     }

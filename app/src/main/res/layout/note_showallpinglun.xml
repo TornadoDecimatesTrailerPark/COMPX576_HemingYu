@@ -3,21 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <com.apple.xhs.custom_view.InfoSettingTitle
         android:id="@+id/allpingluntoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/xhsColor"/>
+        android:background="@color/xhsColor" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/allpinglunparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:orientation="vertical">
-        </LinearLayout>
+            android:orientation="vertical"></LinearLayout>
     </ScrollView>
 
 </LinearLayout>

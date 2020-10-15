@@ -2,7 +2,9 @@ package com.apple.xhs.five_fragment.mine_activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,12 +17,12 @@ import com.data.UpdateDataBmob;
 import butterknife.BindView;
 
 
-
 public class MineSettingName extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.reset_name)
     InfoSettingTitle resetname;
     @BindView(R.id.my_new_name)
     EditText myNewName;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,33 +45,25 @@ public class MineSettingName extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.my_setting_back:
-                setResult(0,new Intent(this,MineUserInfoSetting.class));
+                setResult(0, new Intent(this, MineUserInfoSetting.class));
                 finish();
                 break;
             case R.id.my_setting_done:
                 String string = myNewName.getText().toString();
-                if(string.equals("")){
-                    Toast.makeText(this,"Nickname can not be empty",Toast.LENGTH_SHORT).show();
+                if (string.equals("")) {
+                    Toast.makeText(this, "Nickname can not be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 UpdateDataBmob.UpdataNickname(string);
-                Intent intent1 = new Intent(MineSettingName.this,MineUserInfoSetting.class);
-                intent1.putExtra("name",string);
-                setResult(1,intent1);
+                Intent intent1 = new Intent(MineSettingName.this, MineUserInfoSetting.class);
+                intent1.putExtra("name", string);
+                setResult(1, intent1);
                 finish();
                 break;
         }
     }
-
-
-
-
-
-
-
-
 
 
 }

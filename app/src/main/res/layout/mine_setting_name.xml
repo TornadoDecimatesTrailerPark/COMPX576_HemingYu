@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <com.apple.xhs.custom_view.InfoSettingTitle
         android:id="@+id/reset_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:setText="Change nickname"
         app:setDoneText="Confirm"
-        app:setBackground="@drawable/setting_toolbar"/>
+        app:setBackground="@drawable/setting_toolbar" />
 
     <EditText
         android:id="@+id/my_new_name"
@@ -20,9 +21,10 @@
         android:paddingLeft="20dp"
         android:text="Trump"
         android:textSize="16sp"
-        android:background="@null"/>
+        android:background="@null" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundcolor"/>
+        android:background="@color/backgroundcolor" />
 </LinearLayout>

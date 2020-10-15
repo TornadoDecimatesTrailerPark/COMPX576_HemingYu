@@ -35,6 +35,7 @@
         <item name="android:windowSoftInputMode">stateAlwaysHidden|adjustResize</item>
         <item name="colorPrimaryDark">#E12830</item>
     </style>
+
     <style name="SearchMain" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#E12830</item>
         <item name="android:windowSoftInputMode">stateVisible</item>
@@ -68,7 +69,7 @@
 
     <!-- msg页面的viewpager-->
 
-    <style name="NoteCheckBiaoqian" parent="@android:style/Widget.CompoundButton.CheckBox">
+    <style name="NoteCheckTags" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/note_check_biaoqian</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>

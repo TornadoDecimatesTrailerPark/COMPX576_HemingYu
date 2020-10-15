@@ -25,23 +25,27 @@
             android:textSize="14sp"
             android:gravity="center_vertical"
             android:hint="I would like to say..." />
+
         <View
             android:layout_width="1.5px"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="#c7c6c6"/>
+            android:background="#c7c6c6" />
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:src="@drawable/xyvg_inputbar_emotion"/>
+            android:src="@drawable/xyvg_inputbar_emotion" />
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:paddingRight="5dp"
-            android:src="@drawable/xyvg_inputbar_hashtag"/>
+            android:src="@drawable/xyvg_inputbar_hashtag" />
+
         <Button
             android:id="@+id/note_fabupinglun"
             android:layout_width="0dp"
@@ -52,6 +56,6 @@
             android:text="发布"
             android:textColor="@color/white"
             android:textSize="13sp"
-            style="?android:borderlessButtonStyle"/>
+            style="?android:borderlessButtonStyle" />
     </LinearLayout>
 </merge>
