@@ -3,7 +3,7 @@ package com.apple.util;
 import com.google.android.material.appbar.AppBarLayout;
 
 
-
+//This class is used to listen for the selected status of the listening bar
 public abstract class AppBarStateChangeListener implements AppBarLayout.OnOffsetChangedListener {
     public enum State {
         EXPANDED,

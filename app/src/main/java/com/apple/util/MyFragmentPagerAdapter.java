@@ -6,12 +6,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.List;
 
+//This class is used to adapt to the display page of the notes in the home page (as a fragment)
 
-
-public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
+public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     List<Fragment> data;
     List<String> list;
-    public MyFragmentPagerAdapter(FragmentManager fm,List<Fragment> data,List<String> list) {
+
+    public MyFragmentPagerAdapter(FragmentManager fm, List<Fragment> data, List<String> list) {
         super(fm);
         this.data = data;
         this.list = list;
@@ -26,10 +27,12 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
     public int getCount() {
         return data.size();
     }
-    public void addFragment(Fragment fragment,String string){
+
+    public void addFragment(Fragment fragment, String string) {
         data.add(fragment);
         list.add(string);
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
         return list.get(position);

@@ -1,7 +1,9 @@
 package com.apple.initbmob;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+
 import com.bean.Note;
 
 import java.util.List;
@@ -9,9 +11,10 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 
 
-
+//This is the initialization class of the cloud service
 
 public class InitBmob extends Application {
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
     private static List<Note> list;
     private static int guanzhu = 0; //followed
@@ -24,10 +27,10 @@ public class InitBmob extends Application {
         super.onCreate();
         context = getApplicationContext();
 //        SDKInitializer.initialize(getApplicationContext());
-        Bmob.initialize(getApplicationContext(),"7909b406e0c17b975ca69afa3a2a23da");
+        Bmob.initialize(getApplicationContext(), "7909b406e0c17b975ca69afa3a2a23da");
     }
 
-    public static Context getContext(){
+    public static Context getContext() {
         return context;
     }
 

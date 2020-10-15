@@ -169,8 +169,8 @@ public class NoteScan extends BaseActivity implements View.OnClickListener, View
         SketchImageView imageView = new SketchImageView(this);
         if (map.get(title)==null){
             imageView.displayResourceImage(R.drawable.note5);
-        }
-        imageView.displayResourceImage(map.get(title));
+        }else { imageView.displayResourceImage(map.get(title));}
+
         imageView.getOptions().setDecodeGifImage(true);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

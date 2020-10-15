@@ -1,6 +1,7 @@
 package com.apple.util;
 
 import androidx.viewpager.widget.PagerAdapter;
+
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,12 +9,14 @@ import java.util.List;
 
 import me.xiaopan.sketch.SketchImageView;
 
-
+//This is the adaptive class of the Sketch plug-in, and Sketch is used to make the picture adaptive in size and scale.
 public class MySketchViewPagerAdapter extends PagerAdapter {
     List<SketchImageView> list;
-    public MySketchViewPagerAdapter(List<SketchImageView> list){
+
+    public MySketchViewPagerAdapter(List<SketchImageView> list) {
         this.list = list;
     }
+
     @Override
     public int getCount() {
         return list.size();

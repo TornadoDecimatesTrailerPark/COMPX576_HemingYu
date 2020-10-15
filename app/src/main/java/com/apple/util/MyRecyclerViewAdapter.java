@@ -1,6 +1,7 @@
 package com.apple.util;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +27,13 @@ import me.xiaopan.sketch.SketchImageView;
 import me.xiaopan.sketch.process.CircleImageProcessor;
 import me.xiaopan.sketch.request.DisplayOptions;
 
+//This class loads the RecyclerView of the note display page on the home page
 
-
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> implements View.OnClickListener{
+public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> implements View.OnClickListener {
     List<Note> data;
     View view;
 
-    public MyRecyclerViewAdapter(List<Note> data){
+    public MyRecyclerViewAdapter(List<Note> data) {
         this.data = data;
     }
 
@@ -40,21 +41,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     //define an interface
     public static interface OnItemClickListener {
-        void onItemClick(View view , int position);
+        void onItemClick(View view, int position);
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_grid_item,parent,false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_grid_item, parent, false);
         view.setOnClickListener(this);
         return new MyViewHolder(view);
     }
-//这个position决定他是哪个位置
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Note note = data.get(position);
         MyUser myUser = data.get(position).getAuthor();
-        int picTest=R.drawable.note0;
+        int picTest = R.drawable.note0;
         //holder.imgPic.displayImage(note.getImage().get(0).getUrl());
         //imgPic is the pic in home page
         switch (note.getTitle()) {
@@ -85,28 +86,28 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         MyUser user = BmobUser.getCurrentUser(MyUser.class);
         BmobQuery<Note> query = new BmobQuery<Note>();
-        query.addWhereRelatedTo("likes",new BmobPointer(user));
+        query.addWhereRelatedTo("likes", new BmobPointer(user));
         query.findObjects(new FindListener<Note>() {
             @Override
             public void done(List<Note> list, BmobException e) {
-                if (e==null){
-                    for (Note n : list){
-                        if (n.getObjectId().equals(note.getObjectId())){
+                if (e == null) {
+                    for (Note n : list) {
+                        if (n.getObjectId().equals(note.getObjectId())) {
                             holder.checkBox.setChecked(true);
                         }
                     }
                     holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                            if (b){
+                            if (b) {
                                 AddDataBmob.addLikes(note);
-                            }else {
+                            } else {
                                 DeleteDataBmob.deleteLikes(note);
                             }
                         }
                     });
-                }else {
-                    Log.i("bmob","Failure："+e.getMessage() + e.getErrorCode());
+                } else {
+                    Log.i("bmob", "Failure：" + e.getMessage() + e.getErrorCode());
                 }
             }
         });
@@ -121,7 +122,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onClick(View view) {
         if (mOnItemClickListener != null) {
             //use getTag to get position
-            mOnItemClickListener.onItemClick(view,(int)view.getTag());
+            mOnItemClickListener.onItemClick(view, (int) view.getTag());
         }
     }
 
@@ -135,6 +136,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         TextView textUserName;
         SketchImageView textUserHead;
         CheckBox checkBox;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.grid_item_checkbox);

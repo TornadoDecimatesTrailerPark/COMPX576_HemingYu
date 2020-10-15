@@ -11,8 +11,9 @@ public class ErrorCollecter {
         int code = e.getErrorCode();
         switch (code){
             case 101: return "Wrong username or password";
-            case 108: return "Username and password cannot be empty";
-            case 109: return "Username and password cannot be empty";
+            case 108:
+            case 109:
+                return "Username and password cannot be empty";
             case 202: return "User name already exists";
             case 203: return "Email already exists";
             case 204: return "Email cannot be empty";
